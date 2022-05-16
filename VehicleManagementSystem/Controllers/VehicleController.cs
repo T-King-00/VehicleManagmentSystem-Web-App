@@ -34,13 +34,31 @@ namespace VehicleManagementSystem.Controllers
             var VarVehicles = from v in db.Vehicles1
                               select v;
 
+            var allVehicles = VarVehicles.ToList();
+            int count = VarVehicles.Count();
 
-            if(!String.IsNullOrEmpty(searchForType))
+            for(int i=0;i< count;i++)
             {
-                VarVehicles = VarVehicles.Where(v => v.vehicleType.Contains(searchForType));
+
+                Vehicles y = allVehicles[i];
+                y.Components = from c in db.Components
+                               join v in db.VehicleComponentLists
+                               on c.ComponentID equals v.ComponentID
+                               where v.VehicleGUID == y.VehicleGUID
+                               select c;
+                allVehicles[i].Components = y.Components;
+
+
             }
 
-            return View(VarVehicles.ToList());
+            VarVehicles = allVehicles.AsQueryable();
+
+            if (!String.IsNullOrEmpty(searchForType))
+            {
+                VarVehicles = VarVehicles.Where(v => v.vehicleType.Contains(searchForType.ToLower()));
+            }
+
+            return View(VarVehicles);
         }
 
         // GET: Cars1/Details/5
@@ -75,7 +93,7 @@ namespace VehicleManagementSystem.Controllers
                 {
                     VehicleFactory Factory = new VehicleFactory();
                     Car n = new Car();
-                    Vehicles carObj = Factory.getVehicle("Car");
+                    Vehicles carObj = Factory.getVehicle("car");
 
                     carObj.VehicleGUID= Guid.NewGuid();
                     carObj.isAvailable = true;
@@ -332,10 +350,12 @@ namespace VehicleManagementSystem.Controllers
 
             //  Vehicles f = ViewBag.vehicle;
             Vehicles v = db.Vehicles1.Find(Guid.Parse(vehicleId));
+            //get component details from db
             Component  xx=db.Components.Find(int.Parse(ComponentID));
 
             VehicleComposite composite = new VehicleComposite(v, "vehicle");
-            VehicleComponent componentX = new VehicleComponent(xx.ComponentName);
+            //create obj 
+            VehicleComponent componentX = new VehicleComponent(xx.ComponentName,xx.price);
             composite.addComponent(componentX);
 
 

@@ -6,9 +6,10 @@ namespace VehicleManagementSystem.Models
     public class VehicleComponent : AVehicleComponent     //leafObject
 
     {
-        public VehicleComponent(string componentName) : base(componentName)
+        public VehicleComponent(string componentName,double price) : base(componentName)
         {
             this.ComponentName = componentName;
+            this.price = price;
         }
 
         // properties support encapsulation 
@@ -26,10 +27,19 @@ namespace VehicleManagementSystem.Models
         }
 
 
-        public override double returnPrice()
+        public override void changePrice(double newPrice)
         {
-            return this.price;
+             this.price = newPrice;
         }
+        public override double getPrice()
+        {
+           return this.price ;
+        }
+        public override void showPrice()
+        {
+           
+        }
+
 
         public override void updateComponent(double Price, string Manufacture, string ComponentName)
         {

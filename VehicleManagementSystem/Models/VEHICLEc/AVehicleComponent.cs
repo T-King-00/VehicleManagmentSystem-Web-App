@@ -1,13 +1,10 @@
 ﻿using System;
 namespace VehicleManagementSystem.Models.Vehicle
 {
-    public abstract class AVehicleComponent : Component
+    //extends component class to inherit its variables only :
+    public abstract class AVehicleComponent :  Component
     {
-      //  public Guid ComponentID { get; set; }
-      //  public string ComponentName { get; set; }
-      // public double price { get; set; }
-      // public string Manufacture { get; set; }
-
+   
         protected AVehicleComponent(string componentName)
         {
             this.ComponentName = componentName;
@@ -18,9 +15,16 @@ namespace VehicleManagementSystem.Models.Vehicle
         public abstract void deleteComponent(AVehicleComponent obj);
         public abstract void updateComponent(double Price, string Manufacture, string ComponentName);
 
-        public abstract double returnPrice();
+        public abstract void changePrice(double newPrice);
+
+        public abstract double getPrice();
+        public abstract void showPrice();
 
 
+        //  public Guid ComponentID { get; set; }
+        //  public string ComponentName { get; set; }
+        // public double price { get; set; }
+        // public string Manufacture { get; set; }
 
     }
 }

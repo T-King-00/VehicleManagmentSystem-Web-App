@@ -7,6 +7,7 @@ namespace VehicleManagementSystem.Models
 {
     public partial class Vehicles 
     {
+        public IQueryable<Component> Components { get; set; } 
 
         public  void manufactureCar()
         {

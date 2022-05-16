@@ -8,6 +8,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web.ModelBinding;
 using VehicleManagementSystem.Models.Vehicle;
+using System.Diagnostics;
 
 namespace VehicleManagementSystem.Models.Vehicle
 {
@@ -15,49 +16,59 @@ namespace VehicleManagementSystem.Models.Vehicle
     {
 
         public Vehicles vehicle { get; set; }
-    
+        private List<AVehicleComponent> vehicleCompositeList = new List<AVehicleComponent>();
+
         public VehicleComposite(Vehicles vehicle, string c): base(c)
         {
          
             this.vehicle = vehicle;
-            //vehicle.vehicleCompositeList = new List<AVehicleComponent>();
+            
         }
 
          public override void addComponent(AVehicleComponent obj)
         {
+            vehicleCompositeList.Add(obj);
            // vehicle.vehicleCompositeList.Add(obj);
             Models.VehicleMSysEntities db = Classes.SingleDbObject.getInstance();
-            var result =from v in db.VehicleComponentLists
-                        where v.VehicleGUID.Equals(vehicle.VehicleGUID)
-                        select v;
+            /*   var result =from v in db.VehicleComponentLists
+                           where v.VehicleGUID.Equals(vehicle.VehicleGUID)
+                           select v;*/
+
+            vehicle.price = vehicle.price + obj.price;
 
             VehicleComponentList entity = new VehicleComponentList();
             entity.ComponentListID = vehicle.componentListID;
             entity.VehicleGUID = vehicle.VehicleGUID;
-            entity.ComponentID = obj.ComponentID;
-           // entity.Vehicle = vehicle;
-          //  entity.Component = obj;
+            entity.ComponentID = 1;
+
+            entity.Vehicle = vehicle;
 
             db.VehicleComponentLists.Add(entity);
 
-           
+
 
             try
             {
                
                 db.SaveChanges();
             }
-            catch (Exception e)
+            catch (DbEntityValidationException ex)
             {
-                Console.WriteLine(e);
-                // Provide for exceptions.
+                foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in entityValidationErrors.ValidationErrors)
+                    {
+                       Debug.WriteLine("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                    }
+                }
             }
-        
+
         }
 
 
         public override void deleteComponent(AVehicleComponent obj)
         {
+            vehicleCompositeList.Remove(obj);
             //vehicle.vehicleCompositeList.Remove(obj);
         }
 
@@ -67,16 +78,37 @@ namespace VehicleManagementSystem.Models.Vehicle
             throw new NotImplementedException();
         }
 
-        public override double returnPrice()
+        public override void changePrice(double newPrice)
         {
-            double sum = 0;
+            this.price=newPrice;
+     
 
-           /* foreach (AVehicleComponent comp in vehicle.vehicleCompositeList)
+           /* double sum = 0;
+
+            foreach (AVehicleComponent comp in vehicle.vehicleCompositeList)
             {
                 sum = sum + comp.returnPrice();
 
-            }*/
-            return sum;
-        }     
+            }
+            return sum; */
+        }
+
+        public override double getPrice()
+        {
+            
+            foreach(var item in vehicleCompositeList)
+            {
+                item.showPrice();
+            }
+
+            return 0;
+        }
+
+     
+
+        public override void showPrice()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

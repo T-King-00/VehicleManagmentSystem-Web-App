@@ -52,6 +52,10 @@ namespace VehicleManagementSystem.Models.VEHICLE_FACTORY.decorater
             {
                 return 3511;
             }
+            else if (brand.ToLower() == "mercedes")
+            {
+                return 4511;
+            }
             else
             {
                 Console.WriteLine("SetEnginePrice : brand not  found ");
@@ -64,7 +68,7 @@ namespace VehicleManagementSystem.Models.VEHICLE_FACTORY.decorater
         public double Setprice()
         {
 
-            return base.SetPrice() + setEnginePrice(this.decoratedCar.VehicleBrand);
+            return base.SetPrice() + setEnginePrice(this.VehicleBrand);
         }
 
     }
