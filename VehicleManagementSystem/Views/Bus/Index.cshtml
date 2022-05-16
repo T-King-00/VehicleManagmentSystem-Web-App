@@ -1,0 +1,77 @@
+﻿@model IEnumerable<VehicleManagementSystem.Models.Bus>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EngineType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.componentListID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isAvailable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.color)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.manufactureCompany)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EngineType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.componentListID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isAvailable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.color)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.manufactureCompany)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.BusGUID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.BusGUID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.BusGUID })
+        </td>
+    </tr>
+}
+
+</table>

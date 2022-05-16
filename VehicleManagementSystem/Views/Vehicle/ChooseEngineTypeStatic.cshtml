@@ -1,0 +1,56 @@
+﻿@model VehicleManagementSystem.Models.Vehicles
+@{
+    ViewBag.Title = "   Add engine to vehicle. ";
+}
+
+
+<div style=" display: block; vertical-align: middle;  ">
+    <h1>@ViewBag.Title</h1>
+</div>
+
+@Html.AntiForgeryToken()
+
+<div class="container-fluid " style=" display: block; vertical-align: middle;  ">
+    <div class="row" style=" display: inline-block; vertical-align: middle;  ">
+
+
+        <!-- for one engine  -->
+        <div class="card col-lg-4 " style="  width: 18rem; background-color: #DCDCDC; margin-right: 10px;">
+            <img src="~/Content/Images/engine.jpg" class="card-img-top" style="width:100%; height:60%;" alt="...">
+            <div class="card-body" style="margin: auto; text-align: center ">
+                <h3 class="card-title"><b>  DieselEngine </b></h3>
+
+                @using (Html.BeginForm("ChooseEngineTypeStatic", "Vehicle", new
+                {
+                    vehicleID = @ViewBag.Vehicle.VehicleGUID,
+                    EngineType = "DieselEngine"
+                }))
+                {
+                    <p class="card-text" name="engineType">For DieselEngine</p>
+            
+                    <button class="btn btn-primary" type="submit">  Press here   </button>
+                }
+            </div>
+        </div>
+
+        <!-- for one engine  -->
+        <div class="card col-lg-4 " style="  width: 18rem; background-color: #DCDCDC; margin-right: 10px;">
+            <img src="~/Content/Images/engine.jpg" class="card-img-top" style="width:100%; height:60%;" alt="...">
+            <div class="card-body" style="margin: auto; text-align: center ">
+                <h3 class="card-title"><b>PetrolEngine</b></h3>
+
+                @using (Html.BeginForm("ChooseEngineTypeStatic", "Vehicle", new
+                    {
+                        vehicleID = @ViewBag.Vehicle.VehicleGUID,
+                            EngineType = "PetrolEngine"
+                }))
+                {
+                    <p class="card-text" name="engineType">For PetrolEngine</p>
+                    <button class="btn btn-primary" type="submit">  Press here   </button>
+                }
+            </div>
+        </div>
+
+
+    </div>
+</div>

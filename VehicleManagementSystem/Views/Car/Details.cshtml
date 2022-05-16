@@ -1,0 +1,83 @@
+﻿@model VehicleManagementSystem.Models.Vehicles
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+
+    <div>
+        <h4>Car</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.VehicleBrand)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.VehicleBrand)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.model)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.EngineType)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.EngineType)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.componentListID)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.componentListID)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.isAvailable)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.isAvailable)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.color)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.color)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.model)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.model)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.price)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.price)
+            </dd>
+
+
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.VehicleGUID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

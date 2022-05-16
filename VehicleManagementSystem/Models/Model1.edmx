@@ -1,0 +1,703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="VehicleMSysModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bike">
+          <Key>
+            <PropertyRef Name="BikeGUID" />
+          </Key>
+          <Property Name="BikeGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EngineType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="componentListID" Type="int" Nullable="false" />
+          <Property Name="isAvailable" Type="bit" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="manufactureCompany" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="float" />
+        </EntityType>
+        <EntityType Name="BikeComponentList">
+          <Key>
+            <PropertyRef Name="ComponentListID" />
+          </Key>
+          <Property Name="BikeGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ComponentID" Type="int" Nullable="false" />
+          <Property Name="ComponentListID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Bus">
+          <Key>
+            <PropertyRef Name="BusGUID" />
+          </Key>
+          <Property Name="BusGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EngineType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="componentListID" Type="int" Nullable="false" />
+          <Property Name="isAvailable" Type="bit" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="manufactureCompany" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="float" />
+        </EntityType>
+        <EntityType Name="BusComponentList">
+          <Key>
+            <PropertyRef Name="ComponentListID" />
+          </Key>
+          <Property Name="BusGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ComponentID" Type="int" Nullable="false" />
+          <Property Name="ComponentListID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarGUID" />
+          </Key>
+          <Property Name="CarGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EngineType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="componentListID" Type="int" Nullable="false" />
+          <Property Name="isAvailable" Type="bit" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="manufactureCompany" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="float" />
+        </EntityType>
+        <EntityType Name="CarComponentList">
+          <Key>
+            <PropertyRef Name="ComponentListID" />
+          </Key>
+          <Property Name="CarGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ComponentID" Type="int" Nullable="false" />
+          <Property Name="ComponentListID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Components">
+          <Key>
+            <PropertyRef Name="ComponentID" />
+          </Key>
+          <Property Name="ComponentID" Type="int" Nullable="false" />
+          <Property Name="ComponentName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="price" Type="float" Nullable="false" />
+          <Property Name="Manufacture" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engines">
+          <Key>
+            <PropertyRef Name="EngineId" />
+          </Key>
+          <Property Name="EngineId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VehicleType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VehicleBrand" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VehicleModel" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EngineType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EnginePrice" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="VehicleComponentList">
+          <Key>
+            <PropertyRef Name="ComponentListID" />
+          </Key>
+          <Property Name="ComponentListID" Type="int" Nullable="false" />
+          <Property Name="VehicleGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ComponentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="VehicleGUID" />
+          </Key>
+          <Property Name="VehicleGUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="VehicleBrand" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="vehicleType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EngineType" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="componentListID" Type="int" Nullable="false" />
+          <Property Name="isAvailable" Type="bit" Nullable="false" />
+          <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="model" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="price" Type="float" />
+        </EntityType>
+        <Association Name="FK_BikeComponentList_Bike">
+          <End Role="Bike" Type="Self.Bike" Multiplicity="1" />
+          <End Role="BikeComponentList" Type="Self.BikeComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bike">
+              <PropertyRef Name="BikeGUID" />
+            </Principal>
+            <Dependent Role="BikeComponentList">
+              <PropertyRef Name="BikeGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BikeComponentList_Components">
+          <End Role="Components" Type="Self.Components" Multiplicity="1" />
+          <End Role="BikeComponentList" Type="Self.BikeComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="ComponentID" />
+            </Principal>
+            <Dependent Role="BikeComponentList">
+              <PropertyRef Name="ComponentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Bus_Bus">
+          <End Role="Bus" Type="Self.Bus" Multiplicity="1" />
+          <End Role="Bus1" Type="Self.Bus" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Bus">
+              <PropertyRef Name="BusGUID" />
+            </Principal>
+            <Dependent Role="Bus1">
+              <PropertyRef Name="BusGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusComponentList_Bus">
+          <End Role="Bus" Type="Self.Bus" Multiplicity="1" />
+          <End Role="BusComponentList" Type="Self.BusComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bus">
+              <PropertyRef Name="BusGUID" />
+            </Principal>
+            <Dependent Role="BusComponentList">
+              <PropertyRef Name="BusGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusComponentList_Components">
+          <End Role="Components" Type="Self.Components" Multiplicity="1" />
+          <End Role="BusComponentList" Type="Self.BusComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="ComponentID" />
+            </Principal>
+            <Dependent Role="BusComponentList">
+              <PropertyRef Name="ComponentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarComponentList_Car">
+          <End Role="Car" Type="Self.Car" Multiplicity="1" />
+          <End Role="CarComponentList" Type="Self.CarComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarGUID" />
+            </Principal>
+            <Dependent Role="CarComponentList">
+              <PropertyRef Name="CarGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarComponentList_Components">
+          <End Role="Components" Type="Self.Components" Multiplicity="1" />
+          <End Role="CarComponentList" Type="Self.CarComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="ComponentID" />
+            </Principal>
+            <Dependent Role="CarComponentList">
+              <PropertyRef Name="ComponentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicle_Vehicle">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="Vehicles1" Type="Self.Vehicles" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="VehicleGUID" />
+            </Principal>
+            <Dependent Role="Vehicles1">
+              <PropertyRef Name="VehicleGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleComponentList_Components">
+          <End Role="Components" Type="Self.Components" Multiplicity="1" />
+          <End Role="VehicleComponentList" Type="Self.VehicleComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="ComponentID" />
+            </Principal>
+            <Dependent Role="VehicleComponentList">
+              <PropertyRef Name="ComponentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleComponentList_Vehicle">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="VehicleComponentList" Type="Self.VehicleComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="VehicleGUID" />
+            </Principal>
+            <Dependent Role="VehicleComponentList">
+              <PropertyRef Name="VehicleGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VehicleMSysModelStoreContainer">
+          <EntitySet Name="Bike" EntityType="Self.Bike" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BikeComponentList" EntityType="Self.BikeComponentList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Bus" EntityType="Self.Bus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BusComponentList" EntityType="Self.BusComponentList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Car" EntityType="Self.Car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CarComponentList" EntityType="Self.CarComponentList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Components" EntityType="Self.Components" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Engines" EntityType="Self.Engines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VehicleComponentList" EntityType="Self.VehicleComponentList" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BikeComponentList_Bike" Association="Self.FK_BikeComponentList_Bike">
+            <End Role="Bike" EntitySet="Bike" />
+            <End Role="BikeComponentList" EntitySet="BikeComponentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BikeComponentList_Components" Association="Self.FK_BikeComponentList_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="BikeComponentList" EntitySet="BikeComponentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Bus_Bus" Association="Self.FK_Bus_Bus">
+            <End Role="Bus" EntitySet="Bus" />
+            <End Role="Bus1" EntitySet="Bus" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusComponentList_Bus" Association="Self.FK_BusComponentList_Bus">
+            <End Role="Bus" EntitySet="Bus" />
+            <End Role="BusComponentList" EntitySet="BusComponentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusComponentList_Components" Association="Self.FK_BusComponentList_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="BusComponentList" EntitySet="BusComponentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarComponentList_Car" Association="Self.FK_CarComponentList_Car">
+            <End Role="Car" EntitySet="Car" />
+            <End Role="CarComponentList" EntitySet="CarComponentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarComponentList_Components" Association="Self.FK_CarComponentList_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="CarComponentList" EntitySet="CarComponentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicle_Vehicle" Association="Self.FK_Vehicle_Vehicle">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Vehicles1" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleComponentList_Components" Association="Self.FK_VehicleComponentList_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="VehicleComponentList" EntitySet="VehicleComponentList" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleComponentList_Vehicle" Association="Self.FK_VehicleComponentList_Vehicle">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="VehicleComponentList" EntitySet="VehicleComponentList" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="VehicleMSysModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bike">
+          <Key>
+            <PropertyRef Name="BikeGUID" />
+          </Key>
+          <Property Name="BikeGUID" Type="Guid" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EngineType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="componentListID" Type="Int32" Nullable="false" />
+          <Property Name="isAvailable" Type="Boolean" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="manufactureCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BikeComponentLists" Relationship="Self.FK_BikeComponentList_Bike" FromRole="Bike" ToRole="BikeComponentList" />
+          <Property Name="price" Type="Double" />
+        </EntityType>
+        <EntityType Name="BikeComponentList">
+          <Key>
+            <PropertyRef Name="ComponentListID" />
+          </Key>
+          <Property Name="BikeGUID" Type="Guid" Nullable="false" />
+          <Property Name="ComponentID" Type="Int32" Nullable="false" />
+          <Property Name="ComponentListID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bike" Relationship="Self.FK_BikeComponentList_Bike" FromRole="BikeComponentList" ToRole="Bike" />
+          <NavigationProperty Name="Component" Relationship="Self.FK_BikeComponentList_Components" FromRole="BikeComponentList" ToRole="Components" />
+        </EntityType>
+        <EntityType Name="Bus">
+          <Key>
+            <PropertyRef Name="BusGUID" />
+          </Key>
+          <Property Name="BusGUID" Type="Guid" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EngineType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="componentListID" Type="Int32" Nullable="false" />
+          <Property Name="isAvailable" Type="Boolean" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="manufactureCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BusComponentLists" Relationship="Self.FK_BusComponentList_Bus" FromRole="Bus" ToRole="BusComponentList" />
+          <Property Name="price" Type="Double" />
+          </EntityType>
+        <EntityType Name="BusComponentList">
+          <Key>
+            <PropertyRef Name="ComponentListID" />
+          </Key>
+          <Property Name="BusGUID" Type="Guid" Nullable="false" />
+          <Property Name="ComponentID" Type="Int32" Nullable="false" />
+          <Property Name="ComponentListID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Bus" Relationship="Self.FK_BusComponentList_Bus" FromRole="BusComponentList" ToRole="Bus" />
+          <NavigationProperty Name="Component" Relationship="Self.FK_BusComponentList_Components" FromRole="BusComponentList" ToRole="Components" />
+        </EntityType>
+        <EntityType Name="Car">
+          <Key>
+            <PropertyRef Name="CarGUID" />
+          </Key>
+          <Property Name="CarGUID" Type="Guid" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EngineType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="componentListID" Type="Int32" Nullable="false" />
+          <Property Name="isAvailable" Type="Boolean" Nullable="false" />
+          <Property Name="color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="model" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="manufactureCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="CarComponentLists" Relationship="Self.FK_CarComponentList_Car" FromRole="Car" ToRole="CarComponentList" />
+          <Property Name="price" Type="Double" />
+        </EntityType>
+        <EntityType Name="CarComponentList">
+          <Key>
+            <PropertyRef Name="ComponentListID" />
+          </Key>
+          <Property Name="CarGUID" Type="Guid" Nullable="false" />
+          <Property Name="ComponentID" Type="Int32" Nullable="false" />
+          <Property Name="ComponentListID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Car" Relationship="Self.FK_CarComponentList_Car" FromRole="CarComponentList" ToRole="Car" />
+          <NavigationProperty Name="Component" Relationship="Self.FK_CarComponentList_Components" FromRole="CarComponentList" ToRole="Components" />
+        </EntityType>
+        <EntityType Name="Component">
+          <Key>
+            <PropertyRef Name="ComponentID" />
+          </Key>
+          <Property Name="ComponentID" Type="Int32" Nullable="false" />
+          <Property Name="ComponentName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="price" Type="Double" Nullable="false" />
+          <Property Name="Manufacture" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="BikeComponentLists" Relationship="Self.FK_BikeComponentList_Components" FromRole="Components" ToRole="BikeComponentList" />
+          <NavigationProperty Name="BusComponentLists" Relationship="Self.FK_BusComponentList_Components" FromRole="Components" ToRole="BusComponentList" />
+          <NavigationProperty Name="CarComponentLists" Relationship="Self.FK_CarComponentList_Components" FromRole="Components" ToRole="CarComponentList" />
+          <NavigationProperty Name="VehicleComponentLists" Relationship="VehicleMSysModel.FK_VehicleComponentList_Components" FromRole="Component" ToRole="VehicleComponentList" />
+        </EntityType>
+        <EntityType Name="Engine">
+          <Key>
+            <PropertyRef Name="EngineId" />
+          </Key>
+          <Property Name="EngineId" Type="Guid" Nullable="false" />
+          <Property Name="VehicleType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VehicleBrand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VehicleModel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EngineType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EnginePrice" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_BikeComponentList_Bike">
+          <End Role="Bike" Type="Self.Bike" Multiplicity="1" />
+          <End Role="BikeComponentList" Type="Self.BikeComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bike">
+              <PropertyRef Name="BikeGUID" />
+            </Principal>
+            <Dependent Role="BikeComponentList">
+              <PropertyRef Name="BikeGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BikeComponentList_Components">
+          <End Role="Components" Type="Self.Component" Multiplicity="1" />
+          <End Role="BikeComponentList" Type="Self.BikeComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="ComponentID" />
+            </Principal>
+            <Dependent Role="BikeComponentList">
+              <PropertyRef Name="ComponentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusComponentList_Bus">
+          <End Role="Bus" Type="Self.Bus" Multiplicity="1" />
+          <End Role="BusComponentList" Type="Self.BusComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bus">
+              <PropertyRef Name="BusGUID" />
+            </Principal>
+            <Dependent Role="BusComponentList">
+              <PropertyRef Name="BusGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BusComponentList_Components">
+          <End Role="Components" Type="Self.Component" Multiplicity="1" />
+          <End Role="BusComponentList" Type="Self.BusComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="ComponentID" />
+            </Principal>
+            <Dependent Role="BusComponentList">
+              <PropertyRef Name="ComponentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarComponentList_Car">
+          <End Role="Car" Type="Self.Car" Multiplicity="1" />
+          <End Role="CarComponentList" Type="Self.CarComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Car">
+              <PropertyRef Name="CarGUID" />
+            </Principal>
+            <Dependent Role="CarComponentList">
+              <PropertyRef Name="CarGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CarComponentList_Components">
+          <End Role="Components" Type="Self.Component" Multiplicity="1" />
+          <End Role="CarComponentList" Type="Self.CarComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Components">
+              <PropertyRef Name="ComponentID" />
+            </Principal>
+            <Dependent Role="CarComponentList">
+              <PropertyRef Name="ComponentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="VehicleMSysEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bikes" EntityType="Self.Bike" />
+          <EntitySet Name="BikeComponentLists" EntityType="Self.BikeComponentList" />
+          <EntitySet Name="Buses" EntityType="Self.Bus" />
+          <EntitySet Name="BusComponentLists" EntityType="Self.BusComponentList" />
+          <EntitySet Name="Cars" EntityType="Self.Car" />
+          <EntitySet Name="CarComponentLists" EntityType="Self.CarComponentList" />
+          <EntitySet Name="Components" EntityType="Self.Component" />
+          <EntitySet Name="Engines" EntityType="Self.Engine" />
+          <AssociationSet Name="FK_BikeComponentList_Bike" Association="Self.FK_BikeComponentList_Bike">
+            <End Role="Bike" EntitySet="Bikes" />
+            <End Role="BikeComponentList" EntitySet="BikeComponentLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BikeComponentList_Components" Association="Self.FK_BikeComponentList_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="BikeComponentList" EntitySet="BikeComponentLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusComponentList_Bus" Association="Self.FK_BusComponentList_Bus">
+            <End Role="Bus" EntitySet="Buses" />
+            <End Role="BusComponentList" EntitySet="BusComponentLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BusComponentList_Components" Association="Self.FK_BusComponentList_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="BusComponentList" EntitySet="BusComponentLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarComponentList_Car" Association="Self.FK_CarComponentList_Car">
+            <End Role="Car" EntitySet="Cars" />
+            <End Role="CarComponentList" EntitySet="CarComponentLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CarComponentList_Components" Association="Self.FK_CarComponentList_Components">
+            <End Role="Components" EntitySet="Components" />
+            <End Role="CarComponentList" EntitySet="CarComponentLists" />
+          </AssociationSet>
+          <EntitySet Name="VehicleComponentLists" EntityType="VehicleMSysModel.VehicleComponentList" />
+          <EntitySet Name="Vehicles1" EntityType="VehicleMSysModel.Vehicles" />
+          <AssociationSet Name="FK_VehicleComponentList_Components" Association="VehicleMSysModel.FK_VehicleComponentList_Components">
+            <End Role="Component" EntitySet="Components" />
+            <End Role="VehicleComponentList" EntitySet="VehicleComponentLists" />
+          </AssociationSet>
+          <AssociationSet Name="FK_VehicleComponentList_Vehicle" Association="VehicleMSysModel.FK_VehicleComponentList_Vehicle">
+            <End Role="Vehicle" EntitySet="Vehicles1" />
+            <End Role="VehicleComponentList" EntitySet="VehicleComponentLists" />
+          </AssociationSet>
+          </EntityContainer>
+        <EntityType Name="VehicleComponentList">
+          <Key>
+            <PropertyRef Name="ComponentListID" />
+          </Key>
+          <Property Name="ComponentListID" Type="Int32" Nullable="false" />
+          <Property Name="VehicleGUID" Type="Guid" Nullable="false" />
+          <Property Name="ComponentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Component" Relationship="VehicleMSysModel.FK_VehicleComponentList_Components" FromRole="VehicleComponentList" ToRole="Component" />
+          <NavigationProperty Name="Vehicle" Relationship="VehicleMSysModel.FK_VehicleComponentList_Vehicle" FromRole="VehicleComponentList" ToRole="Vehicle" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="VehicleGUID" />
+          </Key>
+          <Property Name="VehicleGUID" Type="Guid" Nullable="false" />
+          <Property Name="VehicleBrand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="vehicleType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EngineType" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="componentListID" Type="Int32" Nullable="false" />
+          <Property Name="isAvailable" Type="Boolean" Nullable="false" />
+          <Property Name="color" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="VehicleComponentLists" Relationship="VehicleMSysModel.FK_VehicleComponentList_Vehicle" FromRole="Vehicle" ToRole="VehicleComponentList" />
+          <Property Name="price" Type="Double" />
+          </EntityType>
+        <Association Name="FK_VehicleComponentList_Components">
+          <End Type="VehicleMSysModel.Component" Role="Component" Multiplicity="1" />
+          <End Type="VehicleMSysModel.VehicleComponentList" Role="VehicleComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Component">
+              <PropertyRef Name="ComponentID" />
+            </Principal>
+            <Dependent Role="VehicleComponentList">
+              <PropertyRef Name="ComponentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_VehicleComponentList_Vehicle">
+          <End Type="VehicleMSysModel.Vehicles" Role="Vehicle" Multiplicity="1" />
+          <End Type="VehicleMSysModel.VehicleComponentList" Role="VehicleComponentList" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicle">
+              <PropertyRef Name="VehicleGUID" />
+            </Principal>
+            <Dependent Role="VehicleComponentList">
+              <PropertyRef Name="VehicleGUID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="VehicleMSysModelStoreContainer" CdmEntityContainer="VehicleMSysEntities">
+          <EntitySetMapping Name="Bikes">
+            <EntityTypeMapping TypeName="VehicleMSysModel.Bike">
+              <MappingFragment StoreEntitySet="Bike">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="BikeGUID" ColumnName="BikeGUID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+                <ScalarProperty Name="componentListID" ColumnName="componentListID" />
+                <ScalarProperty Name="isAvailable" ColumnName="isAvailable" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="manufactureCompany" ColumnName="manufactureCompany" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BikeComponentLists">
+            <EntityTypeMapping TypeName="VehicleMSysModel.BikeComponentList">
+              <MappingFragment StoreEntitySet="BikeComponentList">
+                <ScalarProperty Name="BikeGUID" ColumnName="BikeGUID" />
+                <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+                <ScalarProperty Name="ComponentListID" ColumnName="ComponentListID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Buses">
+            <EntityTypeMapping TypeName="VehicleMSysModel.Bus">
+              <MappingFragment StoreEntitySet="Bus">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="BusGUID" ColumnName="BusGUID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+                <ScalarProperty Name="componentListID" ColumnName="componentListID" />
+                <ScalarProperty Name="isAvailable" ColumnName="isAvailable" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="manufactureCompany" ColumnName="manufactureCompany" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusComponentLists">
+            <EntityTypeMapping TypeName="VehicleMSysModel.BusComponentList">
+              <MappingFragment StoreEntitySet="BusComponentList">
+                <ScalarProperty Name="BusGUID" ColumnName="BusGUID" />
+                <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+                <ScalarProperty Name="ComponentListID" ColumnName="ComponentListID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cars">
+            <EntityTypeMapping TypeName="VehicleMSysModel.Car">
+              <MappingFragment StoreEntitySet="Car">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="CarGUID" ColumnName="CarGUID" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+                <ScalarProperty Name="componentListID" ColumnName="componentListID" />
+                <ScalarProperty Name="isAvailable" ColumnName="isAvailable" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="manufactureCompany" ColumnName="manufactureCompany" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CarComponentLists">
+            <EntityTypeMapping TypeName="VehicleMSysModel.CarComponentList">
+              <MappingFragment StoreEntitySet="CarComponentList">
+                <ScalarProperty Name="CarGUID" ColumnName="CarGUID" />
+                <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+                <ScalarProperty Name="ComponentListID" ColumnName="ComponentListID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Components">
+            <EntityTypeMapping TypeName="VehicleMSysModel.Component">
+              <MappingFragment StoreEntitySet="Components">
+                <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+                <ScalarProperty Name="ComponentName" ColumnName="ComponentName" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="Manufacture" ColumnName="Manufacture" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Engines">
+            <EntityTypeMapping TypeName="VehicleMSysModel.Engine">
+              <MappingFragment StoreEntitySet="Engines">
+                <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+                <ScalarProperty Name="VehicleType" ColumnName="VehicleType" />
+                <ScalarProperty Name="VehicleBrand" ColumnName="VehicleBrand" />
+                <ScalarProperty Name="VehicleModel" ColumnName="VehicleModel" />
+                <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+                <ScalarProperty Name="EnginePrice" ColumnName="EnginePrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VehicleComponentLists">
+            <EntityTypeMapping TypeName="VehicleMSysModel.VehicleComponentList">
+              <MappingFragment StoreEntitySet="VehicleComponentList">
+                <ScalarProperty Name="ComponentID" ColumnName="ComponentID" />
+                <ScalarProperty Name="VehicleGUID" ColumnName="VehicleGUID" />
+                <ScalarProperty Name="ComponentListID" ColumnName="ComponentListID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles1">
+            <EntityTypeMapping TypeName="VehicleMSysModel.Vehicles">
+              <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="model" ColumnName="model" />
+                <ScalarProperty Name="color" ColumnName="color" />
+                <ScalarProperty Name="isAvailable" ColumnName="isAvailable" />
+                <ScalarProperty Name="componentListID" ColumnName="componentListID" />
+                <ScalarProperty Name="EngineType" ColumnName="EngineType" />
+                <ScalarProperty Name="vehicleType" ColumnName="vehicleType" />
+                <ScalarProperty Name="VehicleBrand" ColumnName="VehicleBrand" />
+                <ScalarProperty Name="VehicleGUID" ColumnName="VehicleGUID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

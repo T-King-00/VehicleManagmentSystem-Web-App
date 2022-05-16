@@ -1,0 +1,189 @@
+﻿@model IEnumerable<VehicleManagementSystem.Models.Vehicles>
+@{
+
+}
+
+<body class="userPage" style="background-image: url('../Content/Images/wallpaper.jpeg');">
+    <br/>
+    <section class="userPage">
+        <div class="container">
+            <label style="color:white;">Search :</label>
+            @using (Html.BeginForm("Products", "User", FormMethod.Post))
+            {
+                @Html.TextBox("searchForType");
+                <input type="submit" value="submit" />
+            }
+            <div class="row">
+
+
+                @foreach (var item in Model)
+                {<div class="col-lg-2" style="margin: 8%;">
+
+                        <div class="card userPage">
+                            <div class="content userPage">
+                                <div class="imgBx userPage">
+                                    <img src="~/Content/Images/wallpaper.jpeg">
+                                </div>
+                                <div class="contentBx userPage">
+                                    <h3> @item.VehicleBrand <br><span> @item.model</span></h3>
+                                    <span class="car-price" style="color:white"><b> £ @item.price</b></span>
+                                </div>
+                            </div>
+                            <ul class="sci userPage">
+                                <li>
+                                    <a href="">happy</a>
+                                </li>
+                                <li>
+                                    <a href="">birth</a>
+                                </li>
+                                <li>
+                                    <a href="">day</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                }
+
+            </div>
+
+        </div>
+
+
+
+
+
+    </section>
+</body>
+
+
+<style>
+
+
+    .userPage body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        /*background: #161616;*/
+        min-height: 100vh;
+        color: white;
+    }
+
+    .userPage section::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* background: linear-gradient(#DA22FF, #9733EE);
+        clip-path: circle(30% at right 70%);*/
+    }
+
+    .userPage section::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* background: linear-gradient(#E55D87, #5FC3E4);
+        clip-path: circle(20% at 10% 10%);*/
+    }
+
+    .userPage .container {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        margin: 40px 0;
+    }
+
+        .userPage .container .card {
+            position: relative;
+            width: 300px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.05);
+       
+            
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+            .userPage .container .card .content {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                transition: 0.5s;
+            }
+
+            .userPage .container .card:hover .content {
+                transform: translateY(-20px);
+            }
+
+            .userPage .container .card .content .imgBx {
+                position: relative;
+                width: 150px;
+                height: 150px;
+                overflow: hidden;
+            }
+
+                .userPage .container .card .content .imgBx img {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+
+            .userPage .container .card .content .contentBx h3 {
+                color: #fff;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                font-weight: 500;
+                font-size: 18px;
+                text-align: center;
+                margin: 20px 0 10px;
+                line-height: 1.1em;
+            }
+
+                .userPage .container .card .content .contentBx h3 span {
+                    font-size: 12px;
+                    font-weight: 300;
+                    text-transform: initial;
+                }
+
+            .userPage .container .card .sci {
+                position: absolute;
+                bottom: 50px;
+                display: flex;
+            }
+
+                .userPage .container .card .sci li {
+                    list-style: none;
+                    margin: 0 10px;
+                    transform: translateY(40px);
+                    transition: 0.5s;
+                    opacity: 0;
+                }
+
+            .userPage .container .card:hover .sci li {
+                transform: translateY(0px);
+                opacity: 1;
+            }
+
+            .userPage .container .card .sci li a {
+                color: #fff;
+                font-size: 20px;
+            }
+</style>

@@ -1,0 +1,77 @@
+﻿@model VehicleManagementSystem.Models.Vehicles
+
+
+
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+        
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.vehicleType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.vehicleType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EngineType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EngineType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.componentListID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.componentListID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.isAvailable)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.isAvailable)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.color)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.color)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.model)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.model)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VehicleBrand)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VehicleBrand)
+            </dd>
+    
+        </dl>
+    
+        @using (Html.BeginForm()) {
+            @Html.AntiForgeryToken()
+    
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>

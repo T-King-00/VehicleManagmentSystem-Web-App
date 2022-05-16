@@ -1,0 +1,90 @@
+﻿@model VehicleManagementSystem.Models.Bus
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Bus</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EngineType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EngineType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.componentListID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.componentListID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.isAvailable)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.isAvailable)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.color)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.color)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.model)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.model)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.manufactureCompany)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.manufactureCompany)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bus1.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bus1.name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bus2.name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bus2.name)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.BusGUID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

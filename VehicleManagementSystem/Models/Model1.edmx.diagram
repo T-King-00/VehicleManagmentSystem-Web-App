@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3afdee9dc3c74d5497bcbaad34c3dc26" Name="Diagram1" ZoomLevel="82">
+        <EntityTypeShape EntityType="VehicleMSysModel.Bike" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VehicleMSysModel.BikeComponentList" Width="1.5" PointX="4.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="VehicleMSysModel.Bus" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="VehicleMSysModel.BusComponentList" Width="1.5" PointX="0.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="VehicleMSysModel.Car" Width="1.5" PointX="0.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="VehicleMSysModel.CarComponentList" Width="1.5" PointX="8" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="VehicleMSysModel.Component" Width="1.5" PointX="7.875" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="VehicleMSysModel.Engine" Width="1.5" PointX="11.625" PointY="2.875" IsExpanded="true" />
+        <AssociationConnector Association="VehicleMSysModel.FK_BikeComponentList_Bike" ManuallyRouted="false" />
+        <AssociationConnector Association="VehicleMSysModel.FK_BikeComponentList_Components" ManuallyRouted="false" />
+        <AssociationConnector Association="VehicleMSysModel.FK_BusComponentList_Bus" ManuallyRouted="false" />
+        <AssociationConnector Association="VehicleMSysModel.FK_BusComponentList_Components" ManuallyRouted="false" />
+        <AssociationConnector Association="VehicleMSysModel.FK_CarComponentList_Car" ManuallyRouted="false" />
+        <AssociationConnector Association="VehicleMSysModel.FK_CarComponentList_Components" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="VehicleMSysModel.VehicleComponentList" Width="1.5" PointX="12.625" PointY="6.125" />
+        <EntityTypeShape EntityType="VehicleMSysModel.Vehicles" Width="1.5" PointX="15.5" PointY="8.375" />
+        <AssociationConnector Association="VehicleMSysModel.FK_VehicleComponentList_Components" />
+        <AssociationConnector Association="VehicleMSysModel.FK_VehicleComponentList_Vehicle" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
