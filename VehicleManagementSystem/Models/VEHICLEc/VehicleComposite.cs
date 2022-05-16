@@ -58,7 +58,7 @@ namespace VehicleManagementSystem.Models.Vehicle
 
         public override void deleteComponent(AVehicleComponent obj)
         {
-            vehicle.vehicleCompositeList.Remove(obj);
+            //vehicle.vehicleCompositeList.Remove(obj);
         }
 
 
@@ -71,11 +71,11 @@ namespace VehicleManagementSystem.Models.Vehicle
         {
             double sum = 0;
 
-            foreach (AVehicleComponent comp in vehicle.vehicleCompositeList)
+           /* foreach (AVehicleComponent comp in vehicle.vehicleCompositeList)
             {
                 sum = sum + comp.returnPrice();
 
-            }
+            }*/
             return sum;
         }     
     }

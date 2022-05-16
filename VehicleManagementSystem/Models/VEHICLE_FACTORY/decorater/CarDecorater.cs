@@ -14,7 +14,7 @@ namespace VehicleManagementSystem.Models.VEHICLE_FACTORY
         }
 
 
-        public override double SetPrice()
+        public  double SetPrice()
         {
             return decoratedCar.SetPrice(); 
         }
