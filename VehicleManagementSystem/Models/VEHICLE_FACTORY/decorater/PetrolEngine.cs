@@ -68,7 +68,7 @@ namespace VehicleManagementSystem.Models.VEHICLE_FACTORY.decorater
         public double Setprice()
         {
 
-            return base.SetPrice() + setEnginePrice(this.VehicleBrand);
+            return base.SetPrice() + setEnginePrice(this.decoratedCar.VehicleBrand);
         }
 
     }

@@ -44,7 +44,7 @@ namespace VehicleManagementSystem.Models.VEHICLE_FACTORY.decorater
         {
             if (brand.ToLower() == "bmw")
             {
-                -return 5522;
+                return 5522;
             }
 
             else if (brand.ToLower() == "hyndai")
