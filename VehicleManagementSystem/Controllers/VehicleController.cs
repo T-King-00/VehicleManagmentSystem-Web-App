@@ -290,13 +290,21 @@ namespace VehicleManagementSystem.Controllers
             {
                 ViewBag.vehicleGuid = veh.VehicleGUID;
                 veh.EngineType = "default";
-      
-              if (ModelState.IsValid)
+
+            if (ModelState.IsValid)
+            {
+                //  db.Entry(veh).State = EntityState.Modified;
+                db.SaveChanges();
+                if (veh.vehicleType.ToLower() == "car")
                 {
-                    db.Entry(veh).State = EntityState.Modified;
-                    db.SaveChanges();
-                  return RedirectToAction("ChooseEngineType", veh);
+                    return RedirectToAction("ChooseEngineTypeStatic", veh);
                 }
+                else
+                {
+                    return RedirectToAction("AddComponentsForVehicle", veh);
+                }
+            }
+            
                 return View(veh);
             }
 
@@ -357,16 +365,24 @@ namespace VehicleManagementSystem.Controllers
             //create obj 
             VehicleComponent componentX = new VehicleComponent(xx.ComponentName,xx.price);
             composite.addComponent(componentX);
-
-
-       
-       
-   
-
             return RedirectToAction("VehicleDetails");
 
 
         }
+
+     /*   protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if (db != null)
+                {
+                   db.Dispose();
+                   
+                }
+            }
+
+            base.Dispose(disposing);
+        }*/
 
 
     }
