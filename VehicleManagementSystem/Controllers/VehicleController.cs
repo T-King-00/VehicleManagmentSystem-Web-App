@@ -341,7 +341,7 @@ namespace VehicleManagementSystem.Controllers
            // Vehicles dbVehicle = db.Vehicles1.Find(Guid.Parse(vehicleId));
             ViewBag.VehicleGUID = vehicle.VehicleGUID;
             ViewBag.vehicle = vehicle;
-            modelView x = new modelView();
+            modelViewVehicle x = new modelViewVehicle();
             x.c = db.Components.ToList();
             x.v = vehicle;
             return View(x);

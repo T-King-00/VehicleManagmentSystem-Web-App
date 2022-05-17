@@ -5,7 +5,7 @@ using System.Web;
 
 namespace VehicleManagementSystem.Models
 {
-    public class modelView
+    public class modelViewVehicle
     {
 
         public Vehicles v { get; set; }

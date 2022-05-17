@@ -348,6 +348,7 @@
     <Content Include="Views\Vehicle\Details.cshtml" />
     <Content Include="Views\User\Products.cshtml" />
     <Content Include="Views\Vehicle\AddComponentsForVehicle.cshtml" />
+    <Content Include="Views\User\OneVehicleDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -4,23 +4,12 @@
 }
 
 <body class="userPage" style="background-image: url('../Content/Images/wallpaper.jpeg');">
-
     <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-12" style="z-index:1;">
-                @using (Html.BeginForm("Products", "User", FormMethod.Post))
-                {<h4 style="color:white; "> Search by type of Vehicle :</h4>
-
-                    @Html.TextBox("searchForType", null, new { @class = "form-control", @style = "width:20%; display:inline;" })
-                    <button type="submit" value="submit" class="btn btn-primary d-inline  p-2"> Search </button>
-                }
-            </div>
-        </div>
-        
-        <div class="row">
+        <div class="row " style="margin-bottom: 100%;">
+            <!-- filtersss   -->
             @using (Html.BeginForm("Products", "User", FormMethod.Post))
             {
-                <div class="col-lg-2 col-md-2 filtersClass" style=" z-index:1;">
+                <div class="col-lg-2 col-md-2 filtersClass " style=" margin-bottom: 20%; z-index: 1;">
 
                     <div data-role="page">
 
@@ -75,55 +64,53 @@
                             <div class="text-right refine">
                                 <button class="btn btn-out btn-primary btn-square" id="button-filter" value="submit" type="submit">Refine Search</button>
                             </div>
-                        </div>     
-                          
-          
+                        </div>
+
+
 
                     </div>
                 </div>
             }
-                @foreach (var item in Model)
-                {<div class="col-lg-3 col-md-3" style="margin:1%;">
 
-                        <div class="card userPage">
-                            <div class="content userPage">
-                                <div class="imgBx userPage">
-                                    <img src="~/Content/Images/wallpaper.jpeg">
-                                </div>
-                                <div class="contentBx userPage">
-                                    <h3> @item.VehicleBrand <br><span> @item.model</span></h3>
-                                    <span class="car-price" style="color:white"><b> £ @item.price</b></span>
-                                </div>
+            <!-- items   -->
+            @foreach (var item in Model)
+            {<div class="col-lg-3 col-md-3" style="margin:1%;">
+
+                    <div class="card userPage">
+                        <div class="content userPage">
+                            <div class="imgBx userPage">
+                                <img src="~/Content/Images/wallpaper.jpeg">
                             </div>
-                            <ul class="sci userPage">
-                                <li>
-                                    <a href="">happy</a>
-                                </li>
-                               
-                               
-                            </ul>
+                            <div class="contentBx userPage">
+                                <b>
+                                    <h3> @item.VehicleBrand <br><span> @item.model</span></h3>
+                                </b>
+                                <h4 class="car-price"><b style="color:whitesmoke ;">£ @item.price </b> </h4>
+                            </div>
                         </div>
+                        <ul class="sci userPage">
+                            <li>
+                                @Html.ActionLink("More Details", "OneVehicleDetails", new { vehicleID = @item.VehicleGUID })    
+                            </li>
+
+
+                        </ul>
                     </div>
+                </div>
 
-                }
-            </div>
-        
-       
+            }
+        </div>    
     </div>
-
-    <br/>
-   
+    <br/> 
 </body>
 
 
 <style>
-
-
     .userPage body {
         display: block;
         /*background: #161616;*/
         min-height: 100vh;
-        
+
     }
 
     .userPage section::before {
@@ -151,9 +138,9 @@
     .userPage .container {
         position: relative;
         z-index: 1;
-        
-    
-    
+
+
+
     }
 
         .userPage .container .card {
@@ -161,8 +148,8 @@
             width: 200px;
             height: 300px;
             background: rgba(255, 255, 255, 0.05);
-       
-            
+
+
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
             border-radius: 15px;
             display: flex;
@@ -181,7 +168,7 @@
             }
 
             .userPage .container .card:hover .content {
-                transform: translateY(-20px);
+                transform: translateY(-15px);
             }
 
             .userPage .container .card .content .imgBx {
@@ -222,22 +209,31 @@
                 bottom: 50px;
                 display: flex;
             }
+    .userPage .car-price {
+        padding: 10px;
+        margin-bottom: 45%;
+    }
 
-                .userPage .container .card .sci li {
-                    list-style: none;
-                    margin: 0 10px;
-                    transform: translateY(40px);
-                    transition: 0.5s;
-                    opacity: 0;
-                }
+    .userPage .container .card .sci li {
+        text-align: right;
+        list-style: none;
+        margin-top: 10px;
+        transform: translateY(50px);
+        transition: 0.5s;
+        opacity: 0;
+    }
 
             .userPage .container .card:hover .sci li {
                 transform: translateY(0px);
+                transform: translateX(-20px);
                 opacity: 1;
             }
 
             .userPage .container .card .sci li a {
+               
+              
                 color: #fff;
-                font-size: 20px;
+                margin: 10px;
+                font-size: 18px;
             }
 </style>

@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VehicleManagementSystem.Models;
 
 namespace VehicleManagementSystem.Controllers
 {
@@ -14,7 +15,8 @@ namespace VehicleManagementSystem.Controllers
 
         // GET: User
         public ActionResult Products(string searchForType)
-        {   db=Classes.SingleDbObject.getInstance(); 
+        {  
+            db=Classes.SingleDbObject.getInstance(); 
 
                 //searchForType = Request["searchForType"];
       
@@ -103,15 +105,67 @@ namespace VehicleManagementSystem.Controllers
 
 
 
+          
 
-         //   db.Dispose();
-         
+
+
+            var allVehicles = VarVehicles.ToList();
+      
+            int count = VarVehicles.Count();
+
+            for (int i = 0; i < count; i++)
+            {
+
+                Vehicles y = allVehicles[i];
+                y.Components = from c in db.Components
+                               join v in db.VehicleComponentLists
+                               on c.ComponentID equals v.ComponentID
+                               where v.VehicleGUID == y.VehicleGUID
+                               select c;
+                allVehicles[i].Components = y.Components;
+
+
+            }
+
+            VarVehicles = allVehicles.AsQueryable();
+
+
+
+
 
             return View(VarVehicles.ToList());
            
         }
 
       
+        public ActionResult OneVehicleDetails()
+        {
+            string id = Request["vehicleID"];
+            db=Classes.SingleDbObject.getInstance();
+            Guid id1 = Guid.Parse(id);
+            var VarVehicles = (from v in db.Vehicles1
+                                   where v.VehicleGUID == id1
+                                   select v).First();
+
+
+
+            VarVehicles.Components = from c in db.Components
+                               join v in db.VehicleComponentLists
+                               on c.ComponentID equals v.ComponentID
+                               where v.VehicleGUID == VarVehicles.VehicleGUID
+                               select c;
+               
+
+
+            
+
+           
+
+
+
+
+            return View(VarVehicles);  
+        }
 
     }
 }
