@@ -22,15 +22,24 @@ namespace VehicleManagementSystem.Models
     
         public System.Guid BikeGUID { get; set; }
         public string name { get; set; }
-       // public string EngineType { get; set; }
-       // public int componentListID { get; set; }
-       // public bool isAvailable { get; set; }
-       // public string color { get; set; }
-      //  public string model { get; set; }
         public string manufactureCompany { get; set; }
-       // public Nullable<double> price { get; set; }
-    
+ 
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BikeComponentList> BikeComponentLists { get; set; }
+
+
+
+
+
+
+
+        // public string EngineType { get; set; }
+        // public int componentListID { get; set; }
+        // public bool isAvailable { get; set; }
+        // public string color { get; set; }
+        //  public string model { get; set; }
+
+        // public Nullable<double> price { get; set; }
     }
 }
