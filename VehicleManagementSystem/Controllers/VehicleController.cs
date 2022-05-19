@@ -194,46 +194,7 @@ namespace VehicleManagementSystem.Controllers
 
             }
 
-            public ActionResult ChooseEngineType(Vehicles vehicle)
-            {
-                List<EngineModel> query = (from e in db.Engines
-                                           where e.VehicleModel == vehicle.model
-                                           select new EngineModel()
-                                           {
-                                               EngineType = e.EngineType,
-                                               EnginePrice = e.EnginePrice,
-                                               EngineId = e.EngineId
-                                           }).ToList();
-
-         
-                ViewBag.enginesLength = query.Count;
-                ViewBag.engines = query;
-                ViewBag.engines = (List<EngineModel>)ViewBag.engines;
-
-                ViewBag.Vehicle = (Vehicles) vehicle;
-                return View(vehicle);
-            }
-        
-         
-            [HttpPost]
-            public ActionResult ChooseEngineType()
-            {
-            
-                string engineType = Request["engineType"];
-                string vehicleId = Request["vehicleID"];
-                Vehicles dbVehicle = db.Vehicles1.Find(Guid.Parse(vehicleId));
-                dbVehicle =new PetrolEngine(dbVehicle);
-
-                dbVehicle.EngineType = engineType;
-                if (ModelState.IsValid)
-                {
-                    db.Entry(dbVehicle).State = EntityState.Modified;
-                    db.SaveChanges();
-                    return RedirectToAction("VehicleDetails");
-                }
-                return View();
-            }  
-
+      
             public ActionResult ChooseEngineTypeStatic(Vehicles vehicle)
             {
               
@@ -401,19 +362,64 @@ namespace VehicleManagementSystem.Controllers
 
         }
 
-     /*   protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                if (db != null)
-                {
-                   db.Dispose();
-                   
-                }
-            }
+        /*   protected override void Dispose(bool disposing)
+           {
+               if (disposing)
+               {
+                   if (db != null)
+                   {
+                      db.Dispose();
 
-            base.Dispose(disposing);
-        }*/
+                   }
+               }
+
+               base.Dispose(disposing);
+           }*/
+
+
+
+
+
+
+        public ActionResult ChooseEngineType(Vehicles vehicle)
+        {
+            /*  List<EngineModel> query = (from e in db.Engines
+                                         where e.VehicleModel == vehicle.model
+                                         select new EngineModel()
+                                         {
+                                             EngineType = e.EngineType,
+                                             EnginePrice = e.EnginePrice,
+                                             EngineId = e.EngineId
+                                         }).ToList();
+
+
+              ViewBag.enginesLength = query.Count;
+              ViewBag.engines = query;
+              ViewBag.engines = (List<EngineModel>)ViewBag.engines;
+
+              ViewBag.Vehicle = (Vehicles) vehicle;*/
+            return View(vehicle);
+        }
+
+
+        [HttpPost]
+        public ActionResult ChooseEngineType()
+        {
+
+            /*   string engineType = Request["engineType"];
+               string vehicleId = Request["vehicleID"];
+               Vehicles dbVehicle = db.Vehicles1.Find(Guid.Parse(vehicleId));
+               dbVehicle =new PetrolEngine(dbVehicle);
+
+               dbVehicle.EngineType = engineType;
+               if (ModelState.IsValid)
+               {
+                   db.Entry(dbVehicle).State = EntityState.Modified;
+                   db.SaveChanges();
+                   return RedirectToAction("VehicleDetails");
+               }*/
+            return View();
+        }
 
 
     }

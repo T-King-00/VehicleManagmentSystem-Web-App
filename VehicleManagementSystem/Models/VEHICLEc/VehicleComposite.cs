@@ -16,6 +16,15 @@ namespace VehicleManagementSystem.Models.Vehicle
     {
 
         public Vehicles vehicle { get; set; }
+
+        public Vehicles Vehicles
+        {
+            get => default;
+            set
+            {
+            }
+        }
+
         private List<AVehicleComponent> vehicleCompositeList = new List<AVehicleComponent>();
 
         public VehicleComposite(Vehicles vehicle, string c): base(c)

@@ -174,18 +174,15 @@
     <Compile Include="Classes\proxy\proxy_vms.cs" />
     <Compile Include="Classes\proxy\real_vms.cs" />
     <Compile Include="Classes\SingleDbObject.cs" />
-    <Compile Include="Controllers\BusController.cs" />
     <Compile Include="Controllers\OTHER\AccountController.cs" />
     <Compile Include="Controllers\OTHER\HomeController.cs" />
     <Compile Include="Controllers\OTHER\ManageController.cs" />
-    <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\StartUpController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Acar.cs" />
     <Compile Include="Models\account.cs">
       <DependentUpon>accounts.tt</DependentUpon>
     </Compile>
@@ -227,10 +224,6 @@
     <Compile Include="Models\Component.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Engine.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\EngineModel.cs" />
     <Compile Include="Models\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -316,6 +309,7 @@
     <Content Include="Models\accounts.edmx.diagram">
       <DependentUpon>accounts.edmx</DependentUpon>
     </Content>
+    <Content Include="ClassDiagram1.cd" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

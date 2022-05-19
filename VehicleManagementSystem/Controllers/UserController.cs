@@ -7,8 +7,11 @@ using System.Web.Mvc;
 using VehicleManagementSystem.Classes.proxy;
 using VehicleManagementSystem.Models;
 
+
+
 namespace VehicleManagementSystem.Controllers
 {
+    //this class implements Single Responsibility Principle as all pages are user pages 
     public class UserController : Controller
     {
         //usage of singleton pattern
