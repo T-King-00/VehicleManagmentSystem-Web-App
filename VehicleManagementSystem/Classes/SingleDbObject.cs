@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using VehicleManagementSystem.Classes.proxy;
 
 
 // SINGLTON Pattern is used for db entities 
@@ -11,6 +12,7 @@ namespace VehicleManagementSystem.Classes
     {
 
         private static Models.VehicleMSysEntities dbObj = new Models.VehicleMSysEntities();
+        private static proxy_vms newz = new proxy_vms();
         private SingleDbObject() {}
         public static Models.VehicleMSysEntities getInstance()
         {
@@ -19,6 +21,14 @@ namespace VehicleManagementSystem.Classes
                 dbObj = new Models.VehicleMSysEntities();
             }
             return dbObj;
+        }
+        public static proxy_vms getInstanceProxy()
+        {
+            if (newz == null)
+            {
+                newz = new proxy_vms();
+            }
+            return newz;
         }
         public static void Dispose(bool disposing)
         {

@@ -15,6 +15,7 @@ using VehicleManagementSystem.Models.VEHICLE_FACTORY.decorater;
 using Car = VehicleManagementSystem.Models.Car;
 using VehicleManagementSystem.Models.Vehicle;
 using VehicleManagementSystem.Classes;
+using VehicleManagementSystem.Classes.proxy;
 
 namespace VehicleManagementSystem.Controllers
 {
@@ -108,8 +109,22 @@ namespace VehicleManagementSystem.Controllers
 
             //Get : e   // Shows view only start of adding vehicle by choosing type
             public ActionResult ChooseVehicleType()
+        {  // string email = Session["email"];
+            account acc = (account)Session["account"];
+            if (acc == null)
             {
-                return View();
+                return RedirectToAction("Login", "StartUp");
+            }
+            proxy_vms prox = Classes.SingleDbObject.getInstanceProxy();
+
+            bool isValid = false;
+            isValid = prox.openLink(acc, "Products", "User");
+            if (isValid != true)
+            {
+                return RedirectToAction("AccessDenied");
+            }
+
+            return View();
             }
 
 
@@ -269,7 +284,23 @@ namespace VehicleManagementSystem.Controllers
         // GET: Cars1/Edit/5
         public ActionResult Edit(Guid? id)
             {
-                if (id == null)
+            // string email = Session["email"];
+            account acc = (account)Session["account"];
+            if (acc == null)
+            {
+                return RedirectToAction("Login", "StartUp");
+            }
+            proxy_vms prox = Classes.SingleDbObject.getInstanceProxy();
+
+            bool isValid = false;
+            isValid = prox.openLink(acc, "Products", "User");
+            if (isValid != true)
+            {
+                return RedirectToAction("AccessDenied");
+            }
+
+
+            if (id == null)
                 {
                     return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
                 }

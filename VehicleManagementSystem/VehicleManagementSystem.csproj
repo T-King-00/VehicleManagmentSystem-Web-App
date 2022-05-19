@@ -170,18 +170,40 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Classes\proxy\vms.cs" />
+    <Compile Include="Classes\proxy\proxy_vms.cs" />
+    <Compile Include="Classes\proxy\real_vms.cs" />
     <Compile Include="Classes\SingleDbObject.cs" />
     <Compile Include="Controllers\BusController.cs" />
     <Compile Include="Controllers\OTHER\AccountController.cs" />
     <Compile Include="Controllers\OTHER\HomeController.cs" />
     <Compile Include="Controllers\OTHER\ManageController.cs" />
     <Compile Include="Controllers\CarController.cs" />
+    <Compile Include="Controllers\StartUpController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\VehicleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Acar.cs" />
+    <Compile Include="Models\account.cs">
+      <DependentUpon>accounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\accounts.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>accounts.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\accounts.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>accounts.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\accounts.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>accounts.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Bike.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -258,6 +280,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\accounts.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>accounts.edmx</DependentUpon>
+      <LastGenOutput>accounts.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\accounts.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>accounts.edmx</DependentUpon>
+      <LastGenOutput>accounts.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -276,6 +308,13 @@
     </EntityDeploy>
     <Content Include="Models\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\accounts.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>accounts.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\accounts.edmx.diagram">
+      <DependentUpon>accounts.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
@@ -349,6 +388,9 @@
     <Content Include="Views\User\Products.cshtml" />
     <Content Include="Views\Vehicle\AddComponentsForVehicle.cshtml" />
     <Content Include="Views\User\OneVehicleDetails.cshtml" />
+    <Content Include="Views\StartUp\Login.cshtml" />
+    <Content Include="Views\User\AccessDenied.cshtml" />
+    <Content Include="Views\User\Buy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

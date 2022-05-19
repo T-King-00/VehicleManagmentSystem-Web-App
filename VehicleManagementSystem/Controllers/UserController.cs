@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VehicleManagementSystem.Classes.proxy;
 using VehicleManagementSystem.Models;
 
 namespace VehicleManagementSystem.Controllers
@@ -14,64 +15,49 @@ namespace VehicleManagementSystem.Controllers
         private Models.VehicleMSysEntities db;
 
         // GET: User
+
+        
         public ActionResult Products(string searchForType)
-        {  
+        {
             db=Classes.SingleDbObject.getInstance(); 
 
-                //searchForType = Request["searchForType"];
-      
+            //gets chocies from radio boxes in view 
             string searchType  = Request["filter[1]"];
             string searchBrand = Request["filter[2]"];
             string searchPrice = Request["filter[3]"];
-
-
             Debug.Write("serach type "+ searchType + "search brand "+searchBrand + "search price" + searchPrice);
-
-            bool isType = false, isBrand = false, isPrice = false;
-            bool isPrice_Brand = false, isPrice_Type = false;  
-            bool isType_brand = false, isType_brand_price=false;
 
             var VarVehicles = from v in db.Vehicles1 
                              select v;
-
             if (!String.IsNullOrEmpty(searchType) && !String.IsNullOrEmpty(searchBrand) && !String.IsNullOrEmpty(searchPrice))
             {
-                isType_brand_price = true;
                 double x = double.Parse(searchPrice);
                 VarVehicles = from v in db.Vehicles1
                               where v.price <= x
                               select v;
-
                 VarVehicles = VarVehicles.Where(v => v.VehicleBrand.Contains(searchBrand) && v.vehicleType.Contains(searchType));
                 
             }
             else if (!String.IsNullOrEmpty(searchType) && !String.IsNullOrEmpty(searchPrice) )
-            {
-                isPrice_Type = true;
+            {  
                 double x = double.Parse(searchPrice);
                 VarVehicles = from v in db.Vehicles1
                               where v.price <= x
                               select v;
-
                 VarVehicles = from v in db.Vehicles1
                                   where v.vehicleType == searchType 
                                   select v;
                 VarVehicles = VarVehicles.Where(v => v.vehicleType.Contains(searchType));
-
-
             }
             else if (!String.IsNullOrEmpty(searchType) && !String.IsNullOrEmpty(searchBrand))
-            {
-                isType_brand = true;
+            {    
                 VarVehicles = from v in db.Vehicles1
                               where v.vehicleType == searchType
                               select v;
                 VarVehicles = VarVehicles.Where(v => v.VehicleBrand.Contains(searchBrand));
-
             }
             else if (!String.IsNullOrEmpty(searchPrice) && !String.IsNullOrEmpty(searchBrand))
             {
-                isPrice_Brand = true;
                 double x=double.Parse(searchPrice);
                 VarVehicles = from v in db.Vehicles1
                               where v.price <= x
@@ -81,41 +67,27 @@ namespace VehicleManagementSystem.Controllers
             }
             else if (!String.IsNullOrEmpty(searchType))
             {
-                isType = true;
                 VarVehicles = VarVehicles.Where(v => v.vehicleType.Contains(searchType));
-
             }
             else if (!String.IsNullOrEmpty(searchPrice))
             {
-                isPrice = true;
                 double x = double.Parse(searchPrice);
                 VarVehicles = from v in db.Vehicles1
                               where v.price <= x
                               select v;
             }
             else if (!String.IsNullOrEmpty(searchBrand))
-            {
-                isBrand = true;
+            {     
                 VarVehicles = from v in db.Vehicles1
                                   where v.VehicleBrand == searchBrand.ToLower()
                                   select v;
-              
-
             }
-
-
-
-          
-
-
-
+            //get comonent for each car
             var allVehicles = VarVehicles.ToList();
-      
             int count = VarVehicles.Count();
 
             for (int i = 0; i < count; i++)
             {
-
                 Vehicles y = allVehicles[i];
                 y.Components = from c in db.Components
                                join v in db.VehicleComponentLists
@@ -124,20 +96,14 @@ namespace VehicleManagementSystem.Controllers
                                select c;
                 allVehicles[i].Components = y.Components;
 
-
             }
 
             VarVehicles = allVehicles.AsQueryable();
-
-
-
-
-
             return View(VarVehicles.ToList());
            
         }
 
-      
+        //get one vehicle detail and its components
         public ActionResult OneVehicleDetails()
         {
             string id = Request["vehicleID"];
@@ -166,6 +132,22 @@ namespace VehicleManagementSystem.Controllers
 
             return View(VarVehicles);  
         }
+
+        public ActionResult Buy()
+        {
+
+
+            return View();  
+        }
+
+
+        //Access denied 
+        public ActionResult AccessDenied()
+        {
+            return View();      
+        }
+
+
 
     }
 }
