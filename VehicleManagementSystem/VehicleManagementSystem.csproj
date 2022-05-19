@@ -170,6 +170,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Classes\SpeedUSAtoUk.cs" />
+    <Compile Include="Classes\SpeedUkToUSA.cs" />
+    <Compile Include="Classes\ISpeed.cs" />
     <Compile Include="Classes\proxy\vms.cs" />
     <Compile Include="Classes\proxy\proxy_vms.cs" />
     <Compile Include="Classes\proxy\real_vms.cs" />
@@ -219,7 +222,10 @@
     <Compile Include="Models\CarComponentList.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\modelView.cs" />
+    <Compile Include="Models\Engine.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Vehicles2.cs" />
     <Compile Include="Models\Component.cs">
       <DependentUpon>Model1.tt</DependentUpon>

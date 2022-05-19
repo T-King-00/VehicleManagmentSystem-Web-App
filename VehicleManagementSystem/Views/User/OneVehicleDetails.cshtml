@@ -32,29 +32,51 @@
                         }
 
 
-                        <div class="d-flex" style="display:inline-block;">
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to favourites
-                            </button>
-                        </div>
-                        @if(@Model.isAvailable==true)
-                        {
-                        <div class="d-flex" style="display:inline-block;">
-                            <button class="btn btn-outline-dark btn btn-primary flex-shrink-0" type="button" data-toggle="tooltip" title="Buy now" onclick="location.href='@Url.Action("Buy", "User")'" >
-                                <i class="bi-cart-fill me-1"></i>
-                                Buy Now
-                            </button>
-                        </div>
+                        @{
+                            List<VehicleManagementSystem.Models.Vehicles> v = new List<VehicleManagementSystem.Models.Vehicles>();
+                            v = Session["FavVehicles"] as List<VehicleManagementSystem.Models.Vehicles>;
+                            if (v != null)
+                            { v.FirstOrDefault(o => o.VehicleGUID == Model.VehicleGUID);
+                            }
+
                         }
-                        @if(@Model.isAvailable==false)
+                        @if (v == null)
                         {
-                        <div class="d-flex" style="display:inline-block;">
-                            <button class="btn-outline-dark btn btn-warning flex-shrink-0" type="button" data-toggle="tooltip" title="This @Model.vehicleType isnot availble for buying at the moment ">
-                                <i class="bi-cart-fill me-1"></i>
-                               not availble
-                            </button>
-                        </div>
+                            <div class="d-flex" style="display:inline-block;">
+                                <button class="btn btn-outline-dark flex-shrink-0 btn btn-success" type="button" onclick="location.href='@Url.Action("AddtoFav", "User",new {vehicleID= Model.VehicleGUID})'">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    Add to favourites
+                                </button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="d-flex" style="display:inline-block;">
+                                <button class="btn btn-outline-dark flex-shrink-0 btn btn-danger" type="button" onclick="location.href='@Url.Action("RemoveFromFav", "User",new {vehicleID= Model.VehicleGUID})'">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    Remove from favourites
+                                </button>
+                            </div>
+                        }
+
+
+                        @if (@Model.isAvailable == true)
+                        {
+                            <div class="d-flex" style="display:inline-block;">
+                                <button class="btn btn-outline-dark btn btn-primary flex-shrink-0" type="button" data-toggle="tooltip" title="Buy now" onclick="location.href='@Url.Action("Buy", "User",new {vehicleID= Model.VehicleGUID})'">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    Buy Now
+                                </button>
+                            </div>
+                        }
+                        @if (@Model.isAvailable == false)
+                        {
+                            <div class="d-flex" style="display:inline-block;">
+                                <button class="btn-outline-dark btn btn-warning flex-shrink-0" type="button" data-toggle="tooltip" title="This @Model.vehicleType isnot availble for buying at the moment ">
+                                    <i class="bi-cart-fill me-1"></i>
+                                    not availble
+                                </button>
+                            </div>
                         }
 
                     </div>

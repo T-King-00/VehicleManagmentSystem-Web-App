@@ -112,6 +112,7 @@
           <Property Name="color" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="model" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="price" Type="float" />
+          <Property Name="speed" Type="float" />
         </EntityType>
         <Association Name="FK_BikeComponentList_Bike">
           <End Role="Bike" Type="Self.Bike" Multiplicity="1" />
@@ -528,6 +529,7 @@
           <Property Name="model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="VehicleComponentLists" Relationship="VehicleMSysModel.FK_VehicleComponentList_Vehicle" FromRole="Vehicle" ToRole="VehicleComponentList" />
           <Property Name="price" Type="Double" />
+          <Property Name="speed1" Type="Double" />
           </EntityType>
         <Association Name="FK_VehicleComponentList_Components">
           <End Type="VehicleMSysModel.Component" Role="Component" Multiplicity="1" />
@@ -665,6 +667,7 @@
           <EntitySetMapping Name="Vehicles1">
             <EntityTypeMapping TypeName="VehicleMSysModel.Vehicles">
               <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="speed1" ColumnName="speed" />
                 <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="model" ColumnName="model" />
                 <ScalarProperty Name="color" ColumnName="color" />

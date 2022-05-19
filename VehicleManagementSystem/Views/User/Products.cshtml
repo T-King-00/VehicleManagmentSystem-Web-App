@@ -10,9 +10,7 @@
             @using (Html.BeginForm("Products", "User", FormMethod.Post))
             {
                 <div class="col-lg-2 col-md-2 filtersClass " style=" margin-bottom: 20%; z-index: 1;">
-
                     <div data-role="page">
-
                         <div class="wrapper center-block hidden-xs">
                             <div class="filters-text">
                                 <h4 class="filter-span" style="color:whitesmoke;">
@@ -52,10 +50,34 @@
                                     <div class="panel-heading" role="tab" id="heading4">
                                         <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4"> Price </a> </h4>
                                     </div>
-                                    <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                                    <div id="collapse3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
                                         <div class="panel-body">
                                             <div class="checkbox"> <label> <input type="radio" class="option-input checkbox" name="filter[3]" value="1000000" /> <span class="ml-10">'less than'1,000,000</span> </label> </div>
                                             <div class="checkbox"> <label> <input type="radio" class="option-input checkbox" name="filter[3]" value="500000" /> <span class="ml-10">'less than'500,000</span> </label> </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading4">
+                                        <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse4" aria-expanded="false" aria-controls="collapse4"> Location </a> </h4>
+                                    </div>
+                                    <div id="collapse4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                                        <div class="panel-body">
+                                            <div class="checkbox"> <label> <input type="radio" class="option-input checkbox" name="filter[4]" value="uk" /> <span class="ml-10"> UK </span> </label> </div>
+                                            <div class="checkbox"> <label> <input type="radio" class="option-input checkbox" name="filter[4]" value="usa" /> <span class="ml-10"> USA </span> </label> </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading" role="tab" id="heading4">
+                                        <h4 class="panel-title"> <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse5" aria-expanded="false" aria-controls="collapse5">Favourites </a> </h4>
+                                    </div>
+                                    <div id="collapse5" class="panel-collapse collapse" role="tabpanel" aria-labelledby="heading4">
+                                        <div class="panel-body">
+                                            <div class="checkbox"> <label> <input type="radio" class="option-input checkbox" name="filter[5]" value="fav" /> <span class="ml-10"> Fav </span> </label> </div>
+                                            <div class="checkbox"> <label> <input type="radio" class="option-input checkbox" name="filter[5]" value="notFav" /> <span class="ml-10"> not fav </span> </label> </div>
 
                                         </div>
                                     </div>
@@ -85,7 +107,20 @@
                                 <b>
                                     <h3> @item.VehicleBrand <br><span> @item.model</span></h3>
                                 </b>
-                                <h4 class="car-price"><b style="color:whitesmoke ;">£ @item.price </b> </h4>
+                                <h4 class="car-price"><b style="color:whitesmoke ;">
+    @if (ViewBag.TempLoc == "usa")
+    {
+        <p style="display:inline-block"> $ </p>
+    }@if (ViewBag.TempLoc == "uk")
+    {
+                                                      <p style="display:inline-block"> £ </p>
+    }@if (String.IsNullOrEmpty(ViewBag.TempLoc))
+    {
+                                                      <p style="display:inline-block"> £ </p>
+    }
+
+    @item.price
+</b> </h4>
                             </div>
                         </div>
                         <ul class="sci userPage">

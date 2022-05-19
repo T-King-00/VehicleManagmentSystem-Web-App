@@ -43,8 +43,40 @@ namespace VehicleManagementSystem.Models.Vehicle
                            where v.VehicleGUID.Equals(vehicle.VehicleGUID)
                            select v;*/
 
-            vehicle.price = vehicle.price + obj.price;
+            //removing old components from db of that car and updating price
+            var x = (from v in db.VehicleComponentLists
+                     where v.VehicleGUID == vehicle.VehicleGUID
+                     select v).ToList();
 
+            int count = x.Count();
+
+            for(int i=0; i<count;i++)
+            {
+                int comid = x[i].ComponentID;
+               var component = (from v in db.Components
+                                where v.ComponentID.Equals(comid) 
+                                select v).ToList();
+                foreach (var c in component)
+                {
+                    vehicle.price = vehicle.price - c.price;
+                }
+
+
+            }
+        
+   
+            //removing them from database
+            List<VehicleComponentList> entity1; 
+            entity1 = (List < VehicleComponentList >) x;
+            foreach(var v in entity1)
+            {
+              
+                db.VehicleComponentLists.Remove(v);
+            }
+
+
+            //adding new component
+            vehicle.price = vehicle.price + obj.price;
             VehicleComponentList entity = new VehicleComponentList();
             entity.ComponentListID = vehicle.componentListID;
             entity.VehicleGUID = vehicle.VehicleGUID;

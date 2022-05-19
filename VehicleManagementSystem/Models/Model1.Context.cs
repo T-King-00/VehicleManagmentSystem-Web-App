@@ -32,10 +32,8 @@ namespace VehicleManagementSystem.Models
         public virtual DbSet<Car> Cars { get; set; }
         public virtual DbSet<CarComponentList> CarComponentLists { get; set; }
         public virtual DbSet<Component> Components { get; set; }
-  
+        public virtual DbSet<Engine> Engines { get; set; }
         public virtual DbSet<VehicleComponentList> VehicleComponentLists { get; set; }
         public virtual DbSet<Vehicles> Vehicles1 { get; set; }
-
-        //      public virtual DbSet<Engine> Engines { get; set; }
     }
 }

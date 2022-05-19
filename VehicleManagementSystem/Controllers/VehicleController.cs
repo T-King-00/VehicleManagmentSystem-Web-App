@@ -162,7 +162,7 @@ namespace VehicleManagementSystem.Controllers
 
             //sends value of the type of vehicle to server on clicking a button in the view . 
             [HttpPost]
-            public ActionResult AddVehicleToDb([Bind(Include = "vehicleType,VehicleBrand,price,model,isAvailable,color")] Vehicles vehicle , string vehicleType)
+            public ActionResult AddVehicleToDb([Bind(Include = "vehicleType,VehicleBrand,price,model,isAvailable,color,speed1")] Vehicles vehicle , string vehicleType)
             {
              //Console.WriteLine(vehicle.price);
                 string vehicleType0 = Request["vehicleType"];
@@ -231,7 +231,7 @@ namespace VehicleManagementSystem.Controllers
            
                 if (ModelState.IsValid)
                 {
-                    db.Entry(dbVehicle).State = EntityState.Modified;
+          //          db.Entry(dbVehicle).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("AddComponentsForVehicle", dbVehicle);
                 }
@@ -270,6 +270,7 @@ namespace VehicleManagementSystem.Controllers
                 {
                     return HttpNotFound();
                 }
+                ViewBag.vehicleID = vehicle.VehicleGUID;
                 return View(vehicle);
             }
 
@@ -278,24 +279,60 @@ namespace VehicleManagementSystem.Controllers
             // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
             [HttpPost]
             [ValidateAntiForgeryToken]
-            public ActionResult Edit([Bind(Include = "VehicleGUID,vehicleType,componentListID,isAvailable,color,model,VehicleBrand")] Vehicles veh)
+            public ActionResult Edit([Bind(Include = "VehicleGUID,price,vehicleType,componentListID,isAvailable,color,model,VehicleBrand,speed1")] Vehicles veh)
             {
+                Guid id = Guid.Parse(Request["VehicleGUID"]);
                 ViewBag.vehicleGuid = veh.VehicleGUID;
+
+                Console.WriteLine(veh.VehicleGUID);
                 veh.EngineType = "default";
 
-            if (ModelState.IsValid)
+
+           
+            var vehicleData = db.Vehicles1.Where(x => x.VehicleGUID == id).FirstOrDefault();
+            if (vehicleData != null)
             {
-                //  db.Entry(veh).State = EntityState.Modified;
-                db.SaveChanges();
-                if (veh.vehicleType.ToLower() == "car")
+                vehicleData.EngineType = "default";
+                vehicleData.price = veh.price;
+                vehicleData.model = veh.model;
+                vehicleData.vehicleType = veh.vehicleType;
+                vehicleData.color = veh.color;
+                vehicleData.speed1 = veh.speed1;
+                vehicleData.isAvailable = veh.isAvailable;
+
+                db.Entry(vehicleData).State = EntityState.Modified;
+                try
                 {
-                    return RedirectToAction("ChooseEngineTypeStatic", veh);
+                    db.SaveChanges();
                 }
-                else
+                catch (DbEntityValidationException ex)
                 {
-                    return RedirectToAction("AddComponentsForVehicle", veh);
+                    foreach (var entityValidationErrors in ex.EntityValidationErrors)
+                    {
+                        foreach (var validationError in entityValidationErrors.ValidationErrors)
+                        {
+                            Response.Write("Property: " + validationError.PropertyName + " Error: " + validationError.ErrorMessage);
+                        }
+                    }
                 }
+          
             }
+
+
+
+              if (ModelState.IsValid)
+             {
+                      
+                  
+                  if (veh.vehicleType.ToLower() == "car")
+                  {
+                      return RedirectToAction("ChooseEngineTypeStatic", veh);
+                  }
+                   else
+                   {
+                        return RedirectToAction("AddComponentsForVehicle", veh);
+                   }
+               }
             
                 return View(veh);
             }
@@ -320,8 +357,26 @@ namespace VehicleManagementSystem.Controllers
             [ValidateAntiForgeryToken]
             public ActionResult DeleteConfirmed(Guid id)
             {
-                Vehicles v = db.Vehicles1.Find(id);
-                db.Vehicles1.Remove(v);
+                  Vehicles vehicle = db.Vehicles1.Find(id);
+
+
+            //removing old components from db of that car and updating price
+            var vehicleComponentList= (from list in db.VehicleComponentLists
+                                       where list.VehicleGUID == vehicle.VehicleGUID
+                                       select list).ToList();
+
+            int count = vehicleComponentList.Count();
+            for (int i = 0; i < count; i++)
+            {
+                //removing them from database
+                VehicleComponentList entity1;
+                entity1 = (VehicleComponentList) vehicleComponentList[i];
+
+                db.VehicleComponentLists.Remove(entity1);
+
+
+            }
+                db.Vehicles1.Remove(vehicle);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
