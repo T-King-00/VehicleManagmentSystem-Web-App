@@ -231,7 +231,7 @@ namespace VehicleManagementSystem.Controllers
            
                 if (ModelState.IsValid)
                 {
-          //          db.Entry(dbVehicle).State = EntityState.Modified;
+                    db.Entry(dbVehicle).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("AddComponentsForVehicle", dbVehicle);
                 }
@@ -326,6 +326,7 @@ namespace VehicleManagementSystem.Controllers
                   
                   if (veh.vehicleType.ToLower() == "car")
                   {
+
                       return RedirectToAction("ChooseEngineTypeStatic", veh);
                   }
                    else
