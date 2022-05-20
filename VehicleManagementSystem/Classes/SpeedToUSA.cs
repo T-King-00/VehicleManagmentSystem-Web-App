@@ -23,7 +23,7 @@ namespace VehicleManagementSystem.Classes
 
         public double ChangeSpeed()
         {
-            return this.speed*= 0.055;
+            return this.speed*= 1.25;
         }
     }
 }
