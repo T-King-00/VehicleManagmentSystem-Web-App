@@ -15,7 +15,7 @@ namespace VehicleManagementSystem.Classes.proxy
         public bool openLink(account x, string viewName, string ControllerName)
         {
             // connected 
-
+          
             Debug.WriteLine("authorized");
             //throw new NotImplementedException();
             return true;

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,12 +19,14 @@ namespace VehicleManagementSystem.Classes.proxy
 
         public bool openLink(account x, string viewName, string ControllerName)
         {
+            real_vms realVms = new real_vms();  
             if(x.role.ToLower() == "admin")
             {
-                obj.openLink(x, viewName, ControllerName);  
-              
-                return true;
-                throw new Exception("is admin . true access allowed");
+                obj.openLink(x, viewName, ControllerName);
+                if(realVms.openLink(x, viewName, ControllerName))
+                { 
+                  return true;
+                }
             }
            return false;
 

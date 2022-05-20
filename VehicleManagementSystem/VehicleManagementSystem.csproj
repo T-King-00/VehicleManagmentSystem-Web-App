@@ -170,6 +170,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Classes\static_functions .cs" />
     <Compile Include="Classes\SpeedUSAtoUk.cs" />
     <Compile Include="Classes\SpeedUkToUSA.cs" />
     <Compile Include="Classes\ISpeed.cs" />
@@ -376,6 +377,7 @@
     <Content Include="Views\StartUp\Login.cshtml" />
     <Content Include="Views\User\AccessDenied.cshtml" />
     <Content Include="Views\User\Buy.cshtml" />
+    <Content Include="Views\StartUp\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
