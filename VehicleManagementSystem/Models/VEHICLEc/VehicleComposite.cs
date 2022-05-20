@@ -90,7 +90,7 @@ namespace VehicleManagementSystem.Models.Vehicle
 
             try
             {
-               
+
                 db.SaveChanges();
             }
             catch (DbEntityValidationException ex)

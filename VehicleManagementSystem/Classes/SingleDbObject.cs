@@ -47,7 +47,7 @@ namespace VehicleManagementSystem.Classes
             {
                 dbObj.Dispose();
                 dbAccounts.Dispose();
-                //newz.Dispose();
+            
             }
          
         }
