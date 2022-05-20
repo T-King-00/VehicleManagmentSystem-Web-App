@@ -12,7 +12,7 @@ namespace VehicleManagementSystem.Classes.proxy
     public class proxy_vms :  Controller,vms 
     {
 
-        private vms obj = new real_vms();
+        private vms vmsObj = new real_vms();
 
         private static List<string> userSites = new List<string>();
       
@@ -22,7 +22,7 @@ namespace VehicleManagementSystem.Classes.proxy
             real_vms realVms = new real_vms();  
             if(x.role.ToLower() == "admin")
             {
-                obj.openLink(x, viewName, ControllerName);
+                vmsObj.openLink(x, viewName, ControllerName);
                 if(realVms.openLink(x, viewName, ControllerName))
                 { 
                   return true;

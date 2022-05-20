@@ -31,25 +31,30 @@ namespace VehicleManagementSystem.Controllers
                 return View(model);
             }
 
-           AccountsEntities db=new AccountsEntities();
-   
-            var accounts=(from a in db.accounts
+           AccountsEntities db=Classes.SingleDbObject.getInstanceAccounts();
+
+            bool alreadyInDb = (from a in db.accounts
+                                where a.email == model.email
+
+                                select a).Count() > 0;
+            if(alreadyInDb)
+            { 
+                 var accounts=(from a in db.accounts
                           where a.email==model.email
             
                          select a).First();
 
-            if(accounts.password==model.password)
-            {
-                Session["account"]=accounts;
-                Session["email"] = accounts.email;
-
-                proxy_vms newz = new proxy_vms();
-                bool isValid= newz.openLink(accounts, "Index", "Home");
-                if(isValid)
+                if(accounts.password==model.password)
                 {
+                    Session["account"]=accounts;
+                    Session["email"] = accounts.email;
+                    Session["role"] = accounts.role;
+
+                   
                     return RedirectToLocal(returnUrl);
-                }
+                    
              
+                }
             }
 
             return View();
@@ -93,7 +98,7 @@ namespace VehicleManagementSystem.Controllers
 
                 model.id=random.Next();
                 model.role ="client";
-
+                Session["role"] = "client";
                 Session["account"] = model;
                 Session["email"] = model.email;
                 db.accounts.Add(model);

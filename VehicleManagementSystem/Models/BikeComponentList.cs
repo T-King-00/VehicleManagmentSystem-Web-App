@@ -21,4 +21,14 @@ namespace VehicleManagementSystem.Models
         public virtual Bike Bike { get; set; }
         public virtual Component Component { get; set; }
     }
+
+    public partial class CopyOfBikeComponentList
+    {
+        public System.Guid BikeGUID { get; set; }
+        public int ComponentID { get; set; }
+        public int ComponentListID { get; set; }
+
+        public virtual Bike Bike { get; set; }
+        public virtual Component Component { get; set; }
+    }
 }

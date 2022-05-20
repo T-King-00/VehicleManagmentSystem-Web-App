@@ -77,38 +77,10 @@ namespace VehicleManagementSystem.Controllers
                 return View(vehicle);
           }
 
-            // GET: Cars1/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
+  
 
-            // POST: Cars1/Create
-            // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-            // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-            [HttpPost]
-            [ValidateAntiForgeryToken]
-            public ActionResult Create([Bind(Include = ",EngineType,price,componentListID,isAvailable,color,model,manufactureCompany")] Vehicles vehicle)
-            {
-                if (ModelState.IsValid)
-                {
-                    VehicleFactory Factory = new VehicleFactory();
-                    Car n = new Car();
-                    Vehicles carObj = Factory.getVehicle("car");
-
-                    carObj.VehicleGUID= Guid.NewGuid();
-                    carObj.isAvailable = true;
-                    db.Vehicles1.Add(carObj);
-                    db.SaveChanges();
-                    return RedirectToAction("Index");
-                }
-
-                return View(vehicle);
-            }
-
-
-            //Get : e   // Shows view only start of adding vehicle by choosing type
-            public ActionResult ChooseVehicleType()
+        //Get : e   // Shows view only start of adding vehicle by choosing type
+        public ActionResult ChooseVehicleType()
         {  // string email = Session["email"];
             account acc = (account)Session["account"];
             if (acc == null)
@@ -128,34 +100,34 @@ namespace VehicleManagementSystem.Controllers
             }
 
 
-            //sends value of the type of vehicle to server on clicking a button in the view . 
-            [HttpPost]
-            public ActionResult AddVehicle()
-            {
+        //sends value of the type of vehicle to server on clicking a button in the view . 
+        [HttpPost]
+        public ActionResult AddVehicle()
+        {
                 string vehicleType = Request["vehicleType"];
                 VehicleFactory Factory = new VehicleFactory();
                 Vehicles newVehicle = Factory.getVehicle(vehicleType);
                 ViewBag.vehicleType = vehicleType;
 
-                if (newVehicle.vehicleType.ToLower() == "car")
+                 if (newVehicle.vehicleType.ToLower() == "car")
+                 {
+
+                        return View(newVehicle);
+                 }
+                if (newVehicle.vehicleType.ToLower() == "bus")
+                {
+
+                    return View(newVehicle);
+                }
+        
+                if (newVehicle.vehicleType.ToLower() == "bike")
                 {
 
                     return View(newVehicle);
                  }
-            if (newVehicle.vehicleType.ToLower() == "bus")
-            {
-
-                return View(newVehicle);
-            }
-        
-            if (newVehicle.vehicleType.ToLower() == "bike")
-            {
-
-                return View(newVehicle);
-    }
 
             return null;
-            }
+         }
 
 
 
@@ -174,7 +146,6 @@ namespace VehicleManagementSystem.Controllers
                 
                 db.Vehicles1.Add(vehicle);
 
-         
                 try
                 {
                     db.SaveChanges();
@@ -418,6 +389,9 @@ namespace VehicleManagementSystem.Controllers
 
         }
 
+
+
+
         /*   protected override void Dispose(bool disposing)
            {
                if (disposing)
@@ -432,6 +406,34 @@ namespace VehicleManagementSystem.Controllers
                base.Dispose(disposing);
            }*/
 
+        // GET: Cars1/Create
+      /*  public ActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Cars1/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+      /*  [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = ",EngineType,price,componentListID,isAvailable,color,model,manufactureCompany")] Vehicles vehicle)
+        {
+            if (ModelState.IsValid)
+            {
+                VehicleFactory Factory = new VehicleFactory();
+                Car n = new Car();
+                Vehicles carObj = Factory.getVehicle("car");
+
+                carObj.VehicleGUID = Guid.NewGuid();
+                carObj.isAvailable = true;
+                db.Vehicles1.Add(carObj);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(vehicle);
+        }
 
 
 
@@ -453,7 +455,7 @@ namespace VehicleManagementSystem.Controllers
               ViewBag.engines = query;
               ViewBag.engines = (List<EngineModel>)ViewBag.engines;
 
-              ViewBag.Vehicle = (Vehicles) vehicle;*/
+              ViewBag.Vehicle = (Vehicles) vehicle;
             return View(vehicle);
         }
 
@@ -473,10 +475,10 @@ namespace VehicleManagementSystem.Controllers
                    db.Entry(dbVehicle).State = EntityState.Modified;
                    db.SaveChanges();
                    return RedirectToAction("VehicleDetails");
-               }*/
+               }
             return View();
         }
-
-
+      */
+    
     }
 }

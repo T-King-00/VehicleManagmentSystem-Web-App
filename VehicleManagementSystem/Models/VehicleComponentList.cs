@@ -21,4 +21,14 @@ namespace VehicleManagementSystem.Models
         public virtual Component Component { get; set; }
         public virtual Vehicles Vehicle { get; set; }
     }
+
+    public partial class CopyOfVehicleComponentList
+    {
+        public int ComponentListID { get; set; }
+        public System.Guid VehicleGUID { get; set; }
+        public int ComponentID { get; set; }
+
+        public virtual Component Component { get; set; }
+        public virtual Vehicles Vehicle { get; set; }
+    }
 }

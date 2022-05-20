@@ -27,4 +27,30 @@ namespace VehicleManagementSystem.Models.Vehicle
         // public string Manufacture { get; set; }
 
     }
+
+    public abstract class CopyOfAVehicleComponent : Component
+    {
+
+        protected CopyOfAVehicleComponent(string componentName)
+        {
+            this.ComponentName = componentName;
+        }
+
+
+        public abstract void addComponent(CopyOfAVehicleComponent obj);
+        public abstract void deleteComponent(CopyOfAVehicleComponent obj);
+        public abstract void updateComponent(double Price, string Manufacture, string ComponentName);
+
+        public abstract void changePrice(double newPrice);
+
+        public abstract double getPrice();
+        public abstract void showPrice();
+
+
+        //  public Guid ComponentID { get; set; }
+        //  public string ComponentName { get; set; }
+        // public double price { get; set; }
+        // public string Manufacture { get; set; }
+
+    }
 }
