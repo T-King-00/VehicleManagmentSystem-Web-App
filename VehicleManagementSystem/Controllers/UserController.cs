@@ -115,14 +115,14 @@ namespace VehicleManagementSystem.Controllers
                 allVehicles[i].Components = y.Components;
 
             }
-            if(loc=="usa")
+            if (loc == "usa")
             {
                 Session["state"] = "usa";
                 for (int i = 0; i < count; i++)
                 {
                     Vehicles y = allVehicles[i];
 
-                    SpeedToUSA chaneSpeedToUsa= new SpeedToUSA(y.price);
+                    SpeedToUSA chaneSpeedToUsa = new SpeedToUSA(y.price);
                     y.price = chaneSpeedToUsa.ChangeSpeed();
                     allVehicles[i].price = y.price;
 
@@ -130,22 +130,29 @@ namespace VehicleManagementSystem.Controllers
 
 
             }
-           else if (loc == "uk")
+            else if (loc == "uk")
             {
-                Session["state"] = "uk";
-                for (int i = 0; i < count; i++)
-                {
-                    Vehicles y = allVehicles[i];
-                    SpeedtoUk chaneSpeedToUk = new SpeedtoUk(y.price);
-                    y.price = chaneSpeedToUk.ChangeSpeed();
+                if (Session["state"] == "usa")
+                { 
+                    for (int i = 0; i < count; i++)
+                    {
+                        Vehicles y = allVehicles[i];
+                        SpeedtoUk chaneSpeedToUk = new SpeedtoUk(y.price);
+                        y.price = chaneSpeedToUk.ChangeSpeed();
 
-                    allVehicles[i].price = y.price;
+                        allVehicles[i].price = y.price;
+
+                    }
+                    Session["state"] = "uk";
+                }
+                else if(Session["state"]==null)
+                {
 
                 }
             }
             else if (String.IsNullOrEmpty(loc))
-            {   if(Session["state"] != null)
-
+            {   
+                if(Session["state"] != null)
                 {
                     if (Session["state"] == "usa")
                     {
@@ -161,6 +168,7 @@ namespace VehicleManagementSystem.Controllers
 
 
                         }
+                        Session["state"] = null;
                     }
                 }
            
