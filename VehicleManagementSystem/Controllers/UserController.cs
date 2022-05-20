@@ -122,7 +122,7 @@ namespace VehicleManagementSystem.Controllers
                 {
                     Vehicles y = allVehicles[i];
 
-                    SpeedUkToUSA chaneSpeedToUsa= new SpeedUkToUSA(y.price);
+                    SpeedToUSA chaneSpeedToUsa= new SpeedToUSA(y.price);
                     y.price = chaneSpeedToUsa.ChangeSpeed();
                     allVehicles[i].price = y.price;
 
@@ -130,13 +130,13 @@ namespace VehicleManagementSystem.Controllers
 
 
             }
-            else if (loc == "uk")
+           else if (loc == "uk")
             {
 
                 for (int i = 0; i < count; i++)
                 {
                     Vehicles y = allVehicles[i];
-                    SpeedUSAtoUk chaneSpeedToUk = new SpeedUSAtoUk(y.price);
+                    SpeedtoUk chaneSpeedToUk = new SpeedtoUk(y.price);
                     y.price = chaneSpeedToUk.ChangeSpeed();
 
                     allVehicles[i].price = y.price;
@@ -408,7 +408,7 @@ namespace VehicleManagementSystem.Controllers
                 {
                     Vehicles y = allVehicles[i];
 
-                    SpeedUkToUSA chaneSpeedToUsa = new SpeedUkToUSA(y.price);
+                    SpeedToUSA chaneSpeedToUsa = new SpeedToUSA(y.price);
                     y.price = chaneSpeedToUsa.ChangeSpeed();
                     allVehicles[i].price = y.price;
 
@@ -422,7 +422,7 @@ namespace VehicleManagementSystem.Controllers
                 for (int i = 0; i < count; i++)
                 {
                     Vehicles y = allVehicles[i];
-                    SpeedUSAtoUk chaneSpeedToUk = new SpeedUSAtoUk(y.price);
+                    SpeedtoUk chaneSpeedToUk = new SpeedtoUk(y.price);
                     y.price = chaneSpeedToUk.ChangeSpeed();
 
                     allVehicles[i].price = y.price;
@@ -431,15 +431,12 @@ namespace VehicleManagementSystem.Controllers
             }
             else if (String.IsNullOrEmpty(loc))
             {
+                var VarVehicles2 = (from v in db.Vehicles1
+                                  where v.isAvailable == true
+                                  select v);
+                 allVehicles = VarVehicles2.ToList();
 
-                for (int i = 0; i < count; i++)
-                {
-                    Vehicles y = allVehicles[i];
-
-
-                    allVehicles[i].price = y.price;
-
-                }
+              
             }
 
 

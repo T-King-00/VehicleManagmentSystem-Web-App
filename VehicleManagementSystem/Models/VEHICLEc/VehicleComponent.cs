@@ -6,10 +6,11 @@ namespace VehicleManagementSystem.Models
     public class VehicleComponent : AVehicleComponent     //leafObject
 
     {
-        public VehicleComponent(string componentName,double price) : base(componentName)
+        public VehicleComponent(string componentName,double price,int id) : base(componentName)
         {
             this.ComponentName = componentName;
             this.price = price;
+            this.ComponentID = id;  
         }
 
         // properties support encapsulation 

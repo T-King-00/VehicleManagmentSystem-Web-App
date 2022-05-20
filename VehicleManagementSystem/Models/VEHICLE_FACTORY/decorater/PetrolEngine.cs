@@ -6,8 +6,6 @@ namespace VehicleManagementSystem.Models.VEHICLE_FACTORY.decorater
 {
     public class PetrolEngine : CarDecorater
     {
-
-
         public PetrolEngine(Vehicles decoratedCar) : base(decoratedCar)
         {
             this.decoratedCar = decoratedCar;

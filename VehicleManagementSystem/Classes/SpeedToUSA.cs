@@ -5,26 +5,25 @@ using System.Web;
 
 namespace VehicleManagementSystem.Classes
 {
-    public class SpeedUSAtoUk : ISpeed
+    public class SpeedToUSA : ISpeed
     {
-
         double speed;
 
-        public SpeedUSAtoUk(double? speed)
+        public SpeedToUSA(double? speed)
         {
-            if (speed != null)
+            if(speed!=null)
             {
                 this.speed = (double)speed;
-
+        
             }
-
+          
 
         }
 
 
         public double ChangeSpeed()
         {
-            return this.speed /=1.25;
+            return this.speed*= 0.055;
         }
     }
 }

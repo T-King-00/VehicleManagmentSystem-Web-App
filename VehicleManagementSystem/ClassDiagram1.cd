@@ -139,26 +139,10 @@
   </Class>
   <Class Name="VehicleManagementSystem.Models.Vehicle.VehicleComposite">
     <Position X="9.5" Y="6.75" Width="2.25" />
-    <AssociationLine Name="Vehicles" Type="VehicleManagementSystem.Models.Vehicles" ManuallyRouted="true">
-      <Path>
-        <Point X="9.5" Y="8.395" />
-        <Point X="9.025" Y="8.395" Type="JumpStart" />
-        <Point X="8.859" Y="8.395" Type="JumpEnd" />
-        <Point X="8.333" Y="8.395" Type="JumpStart" />
-        <Point X="8.167" Y="8.395" Type="JumpEnd" />
-        <Point X="7.905" Y="8.395" />
-        <Point X="7.905" Y="5.253" />
-        <Point X="8.25" Y="5.253" />
-        <Point X="8.25" Y="8.557" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
-      <HashCode>AAAAAABAEAAAgAAACAAQABAAAAAEAAQQAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAABAEAAAAAAACAAQABAAAAAEAAQQAAAAAAAAAAA=</HashCode>
       <FileName>Models\VEHICLEc\VehicleComposite.cs</FileName>
     </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="Vehicles" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="VehicleManagementSystem.Classes.proxy.proxy_vms" BaseTypeListCollapsed="true">
     <Position X="22.75" Y="1.75" Width="1.5" />
@@ -183,19 +167,19 @@
       <FileName>Classes\SingleDbObject.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="VehicleManagementSystem.Classes.SpeedUkToUSA">
+  <Class Name="VehicleManagementSystem.Classes.SpeedToUSA">
     <Position X="20.25" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAAA=</HashCode>
-      <FileName>Classes\SpeedUkToUSA.cs</FileName>
+      <FileName>Classes\SpeedToUSA.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="VehicleManagementSystem.Classes.SpeedUSAtoUk">
+  <Class Name="VehicleManagementSystem.Classes.SpeedtoUk">
     <Position X="18.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAAAAAAAAAAAA=</HashCode>
-      <FileName>Classes\SpeedUSAtoUk.cs</FileName>
+      <FileName>Classes\SpeedtoUk.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>

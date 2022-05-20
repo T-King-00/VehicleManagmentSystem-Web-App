@@ -189,20 +189,20 @@ namespace VehicleManagementSystem.Controllers
                 {
                     if(ReqEngineType.ToLower() == "dieselengine")
                     {
-                        DieselEngine carWithDiselEngine = new DieselEngine(dbVehicle);
-                        carWithDiselEngine.manufactureCar();
+                        DieselEngine carWithDieselEngine = new DieselEngine(dbVehicle);
+                        carWithDieselEngine.manufactureCar();
                     }
                     else if (ReqEngineType.ToLower() == "petrolengine")
                     {
-                        PetrolEngine carWithDiselEngine = new PetrolEngine(dbVehicle);
-                        carWithDiselEngine.manufactureCar();
+                        PetrolEngine carWithPetrolEngine = new PetrolEngine(dbVehicle);
+                        carWithPetrolEngine.manufactureCar();
                     }
 
             }
            
                 if (ModelState.IsValid)
                 {
-                    db.Entry(dbVehicle).State = EntityState.Modified;
+                    //db.Entry(dbVehicle).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("AddComponentsForVehicle", dbVehicle);
                 }
@@ -382,7 +382,7 @@ namespace VehicleManagementSystem.Controllers
 
             VehicleComposite composite = new VehicleComposite(v, "vehicle");
             //create obj 
-            VehicleComponent componentX = new VehicleComponent(xx.ComponentName,xx.price);
+            VehicleComponent componentX = new VehicleComponent(xx.ComponentName,xx.price,xx.ComponentID);
             composite.addComponent(componentX);
             return RedirectToAction("VehicleDetails");
 

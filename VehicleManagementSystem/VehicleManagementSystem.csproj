@@ -171,8 +171,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Classes\static_functions .cs" />
-    <Compile Include="Classes\SpeedUSAtoUk.cs" />
-    <Compile Include="Classes\SpeedUkToUSA.cs" />
+    <Compile Include="Classes\SpeedtoUk.cs" />
+    <Compile Include="Classes\SpeedToUSA.cs" />
     <Compile Include="Classes\ISpeed.cs" />
     <Compile Include="Classes\proxy\vms.cs" />
     <Compile Include="Classes\proxy\proxy_vms.cs" />
