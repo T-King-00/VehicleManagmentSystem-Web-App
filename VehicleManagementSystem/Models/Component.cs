@@ -15,13 +15,7 @@ namespace VehicleManagementSystem.Models
     public partial class Component
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Component()
-        {
-            this.BikeComponentLists = new HashSet<BikeComponentList>();
-            this.BusComponentLists = new HashSet<BusComponentList>();
-            this.CarComponentLists = new HashSet<CarComponentList>();
-            this.VehicleComponentLists = new HashSet<VehicleComponentList>();
-        }
+     
     
         public int ComponentID { get; set; }
         public string ComponentName { get; set; }
@@ -36,5 +30,24 @@ namespace VehicleManagementSystem.Models
         public virtual ICollection<CarComponentList> CarComponentLists { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VehicleComponentList> VehicleComponentLists { get; set; }
+
+
+
+
+
+
+
+
+
+
+
+
+        public Component()
+        {
+            this.BikeComponentLists = new HashSet<BikeComponentList>();
+            this.BusComponentLists = new HashSet<BusComponentList>();
+            this.CarComponentLists = new HashSet<CarComponentList>();
+            this.VehicleComponentLists = new HashSet<VehicleComponentList>();
+        }
     }
 }

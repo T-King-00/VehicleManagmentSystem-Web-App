@@ -28,7 +28,7 @@ namespace VehicleManagementSystem.Models
         public string color { get; set; }
         public string model { get; set; }*/
         public string manufactureCompany { get; set; }
-       // public Nullable<double> price { get; set; }
+      //  public Nullable<double> price { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BusComponentList> BusComponentLists { get; set; }

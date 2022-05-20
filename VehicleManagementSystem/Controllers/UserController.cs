@@ -17,7 +17,9 @@ namespace VehicleManagementSystem.Controllers
     {
         //usage of singleton pattern
         private Models.VehicleMSysEntities db;
+
         private List<Vehicles> ListOfFavVehicles;
+
         // GET: User
         public UserController()
         {
